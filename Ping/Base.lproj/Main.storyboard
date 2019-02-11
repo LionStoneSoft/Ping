@@ -195,19 +195,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aKH-cD-sr5">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aKH-cD-sr5">
                                 <rect key="frame" x="0.0" y="79" width="375" height="588"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Td-nV-8q1">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Td-nV-8q1">
                                 <rect key="frame" x="16" y="27" width="47" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="47" id="8oy-ha-1Ir"/>
+                                    <constraint firstAttribute="height" constant="35" id="YFe-Zi-gvA"/>
+                                </constraints>
                                 <state key="normal" image="defaultProfileIcon2"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.09270862489938736" green="0.092814423143863678" blue="0.092725001275539398" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="aKH-cD-sr5" secondAttribute="bottom" id="8O8-RW-m97"/>
+                            <constraint firstItem="aKH-cD-sr5" firstAttribute="trailing" secondItem="MQP-dG-FAu" secondAttribute="trailing" id="8wb-Ea-SmW"/>
+                            <constraint firstItem="aKH-cD-sr5" firstAttribute="leading" secondItem="MQP-dG-FAu" secondAttribute="leading" id="FPH-YP-UEx"/>
+                            <constraint firstItem="aKH-cD-sr5" firstAttribute="top" secondItem="MQP-dG-FAu" secondAttribute="top" constant="59" id="gHG-nd-ay2"/>
+                            <constraint firstItem="0Td-nV-8q1" firstAttribute="top" secondItem="MQP-dG-FAu" secondAttribute="top" constant="7" id="wIK-WQ-ocg"/>
+                            <constraint firstItem="0Td-nV-8q1" firstAttribute="leading" secondItem="MQP-dG-FAu" secondAttribute="leading" constant="16" id="ygf-ch-xIX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MQP-dG-FAu"/>
                     </view>
                 </viewController>
