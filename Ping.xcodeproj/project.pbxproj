@@ -7,17 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		947731352211E17D00BAC8EC /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947731342211E17D00BAC8EC /* Registration.swift */; };
+		947731372211E19300BAC8EC /* ForgottenPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947731362211E19300BAC8EC /* ForgottenPassword.swift */; };
+		947731392211E1BA00BAC8EC /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947731382211E1BA00BAC8EC /* ChatList.swift */; };
 		9477B20221F6860E00444F35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9477B20121F6860E00444F35 /* AppDelegate.swift */; };
-		9477B20421F6860E00444F35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9477B20321F6860E00444F35 /* ViewController.swift */; };
+		9477B20421F6860E00444F35 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9477B20321F6860E00444F35 /* Login.swift */; };
 		9477B20721F6860E00444F35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9477B20521F6860E00444F35 /* Main.storyboard */; };
 		9477B20921F6860F00444F35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9477B20821F6860F00444F35 /* Assets.xcassets */; };
 		9477B20C21F6860F00444F35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9477B20A21F6860F00444F35 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		947731342211E17D00BAC8EC /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		947731362211E19300BAC8EC /* ForgottenPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgottenPassword.swift; sourceTree = "<group>"; };
+		947731382211E1BA00BAC8EC /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		9477B1FE21F6860E00444F35 /* Ping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9477B20121F6860E00444F35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9477B20321F6860E00444F35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9477B20321F6860E00444F35 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		9477B20621F6860E00444F35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9477B20821F6860F00444F35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9477B20B21F6860F00444F35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				9477B20121F6860E00444F35 /* AppDelegate.swift */,
-				9477B20321F6860E00444F35 /* ViewController.swift */,
+				9477B20321F6860E00444F35 /* Login.swift */,
+				947731342211E17D00BAC8EC /* Registration.swift */,
+				947731362211E19300BAC8EC /* ForgottenPassword.swift */,
+				947731382211E1BA00BAC8EC /* ChatList.swift */,
 				9477B20521F6860E00444F35 /* Main.storyboard */,
 				9477B20821F6860F00444F35 /* Assets.xcassets */,
 				9477B20A21F6860F00444F35 /* LaunchScreen.storyboard */,
@@ -135,7 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9477B20421F6860E00444F35 /* ViewController.swift in Sources */,
+				947731392211E1BA00BAC8EC /* ChatList.swift in Sources */,
+				9477B20421F6860E00444F35 /* Login.swift in Sources */,
+				947731372211E19300BAC8EC /* ForgottenPassword.swift in Sources */,
+				947731352211E17D00BAC8EC /* Registration.swift in Sources */,
 				9477B20221F6860E00444F35 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
