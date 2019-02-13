@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1711BDDDB6493F62A6E88184 /* Pods_Ping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6CACE5AADA04ED75498CE4D /* Pods_Ping.framework */; };
 		947731352211E17D00BAC8EC /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947731342211E17D00BAC8EC /* Registration.swift */; };
 		947731372211E19300BAC8EC /* ForgottenPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947731362211E19300BAC8EC /* ForgottenPassword.swift */; };
 		947731392211E1BA00BAC8EC /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947731382211E1BA00BAC8EC /* ChatList.swift */; };
@@ -15,9 +16,11 @@
 		9477B20721F6860E00444F35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9477B20521F6860E00444F35 /* Main.storyboard */; };
 		9477B20921F6860F00444F35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9477B20821F6860F00444F35 /* Assets.xcassets */; };
 		9477B20C21F6860F00444F35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9477B20A21F6860F00444F35 /* LaunchScreen.storyboard */; };
+		94B4FAF622149DE800C8AB77 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94B4FAF522149DE800C8AB77 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07346D1F521802BBB17ED1F4 /* Pods-Ping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ping.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ping/Pods-Ping.release.xcconfig"; sourceTree = "<group>"; };
 		947731342211E17D00BAC8EC /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		947731362211E19300BAC8EC /* ForgottenPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgottenPassword.swift; sourceTree = "<group>"; };
 		947731382211E1BA00BAC8EC /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
@@ -28,6 +31,9 @@
 		9477B20821F6860F00444F35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9477B20B21F6860F00444F35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9477B20D21F6860F00444F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94B4FAF522149DE800C8AB77 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EA378BEBA866DFA0000F97EE /* Pods-Ping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ping.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ping/Pods-Ping.debug.xcconfig"; sourceTree = "<group>"; };
+		F6CACE5AADA04ED75498CE4D /* Pods_Ping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +41,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1711BDDDB6493F62A6E88184 /* Pods_Ping.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2880378E7326BCF1C0D5CA85 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EA378BEBA866DFA0000F97EE /* Pods-Ping.debug.xcconfig */,
+				07346D1F521802BBB17ED1F4 /* Pods-Ping.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9477B1F521F6860E00444F35 = {
 			isa = PBXGroup;
 			children = (
 				9477B20021F6860E00444F35 /* Ping */,
 				9477B1FF21F6860E00444F35 /* Products */,
+				2880378E7326BCF1C0D5CA85 /* Pods */,
+				F986D7317C8E45EDF782CD92 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,9 +86,18 @@
 				9477B20521F6860E00444F35 /* Main.storyboard */,
 				9477B20821F6860F00444F35 /* Assets.xcassets */,
 				9477B20A21F6860F00444F35 /* LaunchScreen.storyboard */,
+				94B4FAF522149DE800C8AB77 /* GoogleService-Info.plist */,
 				9477B20D21F6860F00444F35 /* Info.plist */,
 			);
 			path = Ping;
+			sourceTree = "<group>";
+		};
+		F986D7317C8E45EDF782CD92 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F6CACE5AADA04ED75498CE4D /* Pods_Ping.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,9 +107,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9477B21021F6860F00444F35 /* Build configuration list for PBXNativeTarget "Ping" */;
 			buildPhases = (
+				32E1DC817EB660D8BC1FC125 /* [CP] Check Pods Manifest.lock */,
 				9477B1FA21F6860E00444F35 /* Sources */,
 				9477B1FB21F6860E00444F35 /* Frameworks */,
 				9477B1FC21F6860E00444F35 /* Resources */,
+				D64B93EBDBE6D5D95B9659F2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -134,10 +163,66 @@
 				9477B20C21F6860F00444F35 /* LaunchScreen.storyboard in Resources */,
 				9477B20921F6860F00444F35 /* Assets.xcassets in Resources */,
 				9477B20721F6860E00444F35 /* Main.storyboard in Resources */,
+				94B4FAF622149DE800C8AB77 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		32E1DC817EB660D8BC1FC125 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ping-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D64B93EBDBE6D5D95B9659F2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ping/Pods-Ping-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ping/Pods-Ping-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9477B1FA21F6860E00444F35 /* Sources */ = {
@@ -292,6 +377,7 @@
 		};
 		9477B21121F6860F00444F35 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA378BEBA866DFA0000F97EE /* Pods-Ping.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -301,7 +387,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = LionStone.com.Ping;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LionStone.Ping;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -310,6 +396,7 @@
 		};
 		9477B21221F6860F00444F35 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07346D1F521802BBB17ED1F4 /* Pods-Ping.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -319,7 +406,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = LionStone.com.Ping;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LionStone.Ping;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
