@@ -11,14 +11,30 @@ import Firebase
 
 class Login: UIViewController {
 
+    @IBOutlet var emailField: UITextField!
+    @IBOutlet var passwordField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
     }
 
-
+    @IBAction func signInPressed(_ sender: UIButton) {
+        Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
+            if error != nil {
+                print(error!)
+            } else {
+                print("Login Success")
+                self.performSegue(withIdentifier: "goToChat", sender: self)
+            }
+        }
+    }
+    
 }
 
+
+
+//hides keyboard when screen is tapped
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tapGesture = UITapGestureRecognizer(target: self,

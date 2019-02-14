@@ -43,7 +43,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="1bE-cY-bz5" kind="show" id="NUB-0G-k9O"/>
+                                    <action selector="signInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZQy-MH-mTg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMj-I9-WXu">
@@ -52,7 +52,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="aCY-W5-CAm" kind="show" id="sUV-aP-wh2"/>
+                                    <segue destination="aCY-W5-CAm" kind="show" identifier="goToForgot" id="sUV-aP-wh2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vtL-aV-Ccg">
@@ -61,7 +61,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="QH2-QX-Ry6" kind="show" id="bR0-TG-16M"/>
+                                    <segue destination="QH2-QX-Ry6" kind="show" identifier="goToSignUp" id="bR0-TG-16M"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -92,6 +92,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="RdF-Vl-4KA" id="acS-Cq-32Z"/>
+                        <outlet property="passwordField" destination="O6r-IM-xB3" id="sdb-Jd-4pg"/>
+                        <segue destination="1bE-cY-bz5" kind="show" identifier="goToChat" id="MSl-jD-45n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -146,9 +151,12 @@
                                 <state key="normal" title="Register">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="registerButtonPress:" destination="QH2-QX-Ry6" eventType="touchUpInside" id="ZeO-j8-pgE"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtH-HY-r3h">
-                                <rect key="frame" x="145" y="104" width="86" height="30"/>
+                                <rect key="frame" x="144.5" y="104" width="86" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -182,10 +190,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ewn-6G-HIr"/>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="T35-GC-mQL" id="9vd-bC-0JC"/>
+                        <outlet property="passwordField" destination="TkR-DW-8yb" id="8Hf-i0-Jo3"/>
+                        <outlet property="passwordReEnterField" destination="T3h-qF-7se" id="iAG-cc-QJy"/>
+                        <outlet property="usernameField" destination="tlr-Pl-r0a" id="QMG-1v-SXH"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToLoginAfterRegister" id="UZq-VI-ieP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tkx-xd-gTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="56.799999999999997" y="805.54722638680664"/>
+            <point key="canvasLocation" x="158" y="806"/>
         </scene>
         <!--Chat List-->
         <scene sceneID="fgE-nk-W5K">

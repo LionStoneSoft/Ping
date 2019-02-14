@@ -78,18 +78,42 @@
 		9477B20021F6860E00444F35 /* Ping */ = {
 			isa = PBXGroup;
 			children = (
+				94B4FAF92215B17600C8AB77 /* Controller */,
+				94B4FAF82215B16D00C8AB77 /* View */,
+				94B4FAF72215B16200C8AB77 /* Model */,
+				9477B20821F6860F00444F35 /* Assets.xcassets */,
+				94B4FAF522149DE800C8AB77 /* GoogleService-Info.plist */,
+				9477B20D21F6860F00444F35 /* Info.plist */,
+			);
+			path = Ping;
+			sourceTree = "<group>";
+		};
+		94B4FAF72215B16200C8AB77 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		94B4FAF82215B16D00C8AB77 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9477B20521F6860E00444F35 /* Main.storyboard */,
+				9477B20A21F6860F00444F35 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		94B4FAF92215B17600C8AB77 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 				9477B20121F6860E00444F35 /* AppDelegate.swift */,
 				9477B20321F6860E00444F35 /* Login.swift */,
 				947731342211E17D00BAC8EC /* Registration.swift */,
 				947731362211E19300BAC8EC /* ForgottenPassword.swift */,
 				947731382211E1BA00BAC8EC /* ChatList.swift */,
-				9477B20521F6860E00444F35 /* Main.storyboard */,
-				9477B20821F6860F00444F35 /* Assets.xcassets */,
-				9477B20A21F6860F00444F35 /* LaunchScreen.storyboard */,
-				94B4FAF522149DE800C8AB77 /* GoogleService-Info.plist */,
-				9477B20D21F6860F00444F35 /* Info.plist */,
 			);
-			path = Ping;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		F986D7317C8E45EDF782CD92 /* Frameworks */ = {
