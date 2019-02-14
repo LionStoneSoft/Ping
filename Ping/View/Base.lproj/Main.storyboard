@@ -247,6 +247,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MQP-dG-FAu"/>
                     </view>
+                    <connections>
+                        <outlet property="chatsTableView" destination="aKH-cD-sr5" id="Poo-1m-kzx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HZa-dy-Z2j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

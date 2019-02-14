@@ -17,6 +17,8 @@
 		9477B20921F6860F00444F35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9477B20821F6860F00444F35 /* Assets.xcassets */; };
 		9477B20C21F6860F00444F35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9477B20A21F6860F00444F35 /* LaunchScreen.storyboard */; };
 		94B4FAF622149DE800C8AB77 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94B4FAF522149DE800C8AB77 /* GoogleService-Info.plist */; };
+		94C03D692215F764005E2B5A /* CustomChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C03D672215F764005E2B5A /* CustomChatCell.swift */; };
+		94C03D6A2215F764005E2B5A /* CustomChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C03D682215F764005E2B5A /* CustomChatCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		9477B20B21F6860F00444F35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9477B20D21F6860F00444F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94B4FAF522149DE800C8AB77 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		94C03D672215F764005E2B5A /* CustomChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChatCell.swift; sourceTree = "<group>"; };
+		94C03D682215F764005E2B5A /* CustomChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomChatCell.xib; sourceTree = "<group>"; };
 		EA378BEBA866DFA0000F97EE /* Pods-Ping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ping.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ping/Pods-Ping.debug.xcconfig"; sourceTree = "<group>"; };
 		F6CACE5AADA04ED75498CE4D /* Pods_Ping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -98,6 +102,7 @@
 		94B4FAF82215B16D00C8AB77 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				94C03D622215D952005E2B5A /* Custom Cell */,
 				9477B20521F6860E00444F35 /* Main.storyboard */,
 				9477B20A21F6860F00444F35 /* LaunchScreen.storyboard */,
 			);
@@ -114,6 +119,15 @@
 				947731382211E1BA00BAC8EC /* ChatList.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		94C03D622215D952005E2B5A /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				94C03D672215F764005E2B5A /* CustomChatCell.swift */,
+				94C03D682215F764005E2B5A /* CustomChatCell.xib */,
+			);
+			path = "Custom Cell";
 			sourceTree = "<group>";
 		};
 		F986D7317C8E45EDF782CD92 /* Frameworks */ = {
@@ -187,6 +201,7 @@
 				9477B20C21F6860F00444F35 /* LaunchScreen.storyboard in Resources */,
 				9477B20921F6860F00444F35 /* Assets.xcassets in Resources */,
 				9477B20721F6860E00444F35 /* Main.storyboard in Resources */,
+				94C03D6A2215F764005E2B5A /* CustomChatCell.xib in Resources */,
 				94B4FAF622149DE800C8AB77 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94C03D692215F764005E2B5A /* CustomChatCell.swift in Sources */,
 				947731392211E1BA00BAC8EC /* ChatList.swift in Sources */,
 				9477B20421F6860E00444F35 /* Login.swift in Sources */,
 				947731372211E19300BAC8EC /* ForgottenPassword.swift in Sources */,
