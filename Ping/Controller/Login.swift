@@ -32,8 +32,6 @@ class Login: UIViewController {
     
 }
 
-
-
 //hides keyboard when screen is tapped
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {

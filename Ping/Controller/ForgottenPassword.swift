@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class ForgottenPassword: UIViewController {
+    
+    @IBOutlet var emailField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,4 +22,14 @@ class ForgottenPassword: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func submitButton(_ sender: UIButton) {
+        Auth.auth().sendPasswordReset(withEmail: emailField.text!) { (error) in
+            if error != nil {
+                print(error!)
+            } else {
+                print("Reset Password Success")
+                self.performSegue(withIdentifier: "goToLoginAfterReset", sender: self)
+            }
+        }
+    }
 }
