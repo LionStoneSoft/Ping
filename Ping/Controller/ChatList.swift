@@ -22,13 +22,18 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customChatCell", for: indexPath) as! CustomChatCell //initiate custom cell for chat table view
-        let username = ["Username1", "Username2", "Username3"]
-        cell.chatUsername.text = username[indexPath.row]
+        let username = ["Username1", "Username2", "Username3"] //declared array for test data
+        cell.chatUsername.text = username[indexPath.row] //alter chatUsername element with test data for username
+        
         return cell
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { //returns number of cells wanted on tableview
         return 3
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "toMessages", sender: self)
     }
     
 }
