@@ -12,6 +12,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     @IBOutlet var messageNameLabel: UILabel!
     @IBOutlet var messageTableView: UITableView!
+    let messages = ["Hello", "This is a test", "This message is to test the resizing abilities of the cell in the UI Table View", "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test"] //declared array for test data
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +25,12 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell //initiate custom cell for chat table view
-        let messages = ["Hello", "This is a test", "This message is to test the resizing abilities of the cell in the UI Table View"] //declared array for test data
         cell.messageFromUserText.text = messages[indexPath.row] //alter chatUsername element with test data for username
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { //returns number of cells wanted on tableview
-        return 3
+        return messages.count
     }
     
     func configureTableView() {
