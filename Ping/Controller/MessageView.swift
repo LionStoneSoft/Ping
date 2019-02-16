@@ -10,6 +10,7 @@ import UIKit
 
 class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet var messageNameLabel: UILabel!
     @IBOutlet var messageTableView: UITableView!
     
     override func viewDidLoad() {
@@ -18,6 +19,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         messageTableView.delegate = self //sets self as delegate for table view
         messageTableView.dataSource = self //sets self as data source for table view
         messageTableView.register(UINib(nibName: "CustomMessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell") //register xib file to chat table view
+        configureTableView()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -31,4 +33,12 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         return 3
     }
     
+    func configureTableView() {
+        messageTableView.rowHeight = UITableView.automaticDimension
+        messageTableView.estimatedRowHeight = 35.0
+    }
+    
+    @IBAction func backButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

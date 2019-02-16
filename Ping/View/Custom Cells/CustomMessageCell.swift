@@ -10,7 +10,6 @@ import UIKit
 
 class CustomMessageCell: UITableViewCell {
 
-    @IBOutlet var messageFromUserBackground: UIImageView!
     @IBOutlet var messageFromUserText: UILabel!
     
     
