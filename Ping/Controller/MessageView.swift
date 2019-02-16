@@ -41,4 +41,6 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     @IBAction func backButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    @IBAction func sendMessageButton(_ sender: UIButton) {
+    }
 }
