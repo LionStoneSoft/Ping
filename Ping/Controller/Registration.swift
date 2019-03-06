@@ -19,6 +19,7 @@ class Registration: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        hideKeyboardWhenTappedAround()
     }
     
 
@@ -31,6 +32,15 @@ class Registration: UIViewController {
             if error != nil {
                 print(error!)
             } else {
+                let uid = Auth.auth().currentUser!.uid
+                let ref = Database.database().reference().child("users").child(uid)
+                let values = ["username": self.usernameField.text!, "email": self.emailField.text!] as [String : Any]
+                ref.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                    if err != nil {
+                        print(err!)
+                        return
+                    }
+                })
                 print("Registration Success")
                 self.performSegue(withIdentifier: "goToLoginAfterRegister", sender: self)
             }

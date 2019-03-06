@@ -407,6 +407,7 @@
                     <connections>
                         <outlet property="messageNameLabel" destination="jRp-HH-gVW" id="wgf-fC-VUG"/>
                         <outlet property="messageTableView" destination="wco-gi-4jE" id="FhT-Vl-x0h"/>
+                        <outlet property="messageTextInput" destination="7gy-U7-fue" id="zdB-hy-NeS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8J-YY-5FZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

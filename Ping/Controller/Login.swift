@@ -30,6 +30,10 @@ class Login: UIViewController {
         }
     }
     
+    override open var shouldAutorotate: Bool { //disable auto rotate for this view
+        return false
+    }
+    
 }
 
 //hides keyboard when screen is tapped
