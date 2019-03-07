@@ -14,10 +14,8 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet var messageTextInput: UITextField!
     @IBOutlet var messageNameLabel: UILabel!
     @IBOutlet var messageTableView: UITableView!
-    var databaseHandle: DatabaseHandle!
-    var databaseRefer: DatabaseReference!
     let messages = ["Hello", "This is a test", "This message is to test the resizing abilities of the cell in the UI Table View", "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test"] //declared array for test data
-    var userName: String!
+    var username: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +25,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         messageTableView.register(UINib(nibName: "CustomMessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell") //register xib file to chat table view
         configureTableView()
         hideKeyboardWhenTappedAround()
+        retrieveUsername()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,9 +50,21 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     @IBAction func sendMessageButton(_ sender: UIButton) {
         let ref = Database.database().reference().child("messages")
         let childRef = ref.childByAutoId()
-        let values = ["text": messageTextInput.text!, "username": userName]
+        let values = ["text": messageTextInput.text!, "sender": username]
         childRef.updateChildValues(values as [AnyHashable : Any])
         print(messageTextInput.text!)
+    }
+    
+    func retrieveUsername() {
+        let currentUser = Auth.auth().currentUser
+        var databaseReference: DatabaseReference!
+        databaseReference = Database.database().reference()
+        databaseReference.child("users").child((currentUser?.uid)!).observeSingleEvent(of: .value) { (snapshot) in
+            if let name = snapshot.value as? [String: AnyObject] {
+                self.messageNameLabel.text = name["username"] as? String
+                self.username = name["username"] as? String
+            }
+        }
     }
 }
 

@@ -358,12 +358,6 @@
                                     <action selector="backButton:" destination="RbI-km-En4" eventType="touchUpInside" id="wgj-4G-KdT"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRp-HH-gVW">
-                                <rect key="frame" x="154" y="32" width="67" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7gy-U7-fue">
                                 <rect key="frame" x="16" y="628" width="314" height="30"/>
                                 <nil key="textColor"/>
@@ -382,24 +376,30 @@
                                     <action selector="sendMessageButton:" destination="RbI-km-En4" eventType="touchUpInside" id="hgH-x1-zYa"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRp-HH-gVW">
+                                <rect key="frame" x="62" y="32" width="250" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.09270862489938736" green="0.092814423143863678" blue="0.092725001275539398" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wco-gi-4jE" firstAttribute="bottom" secondItem="dov-47-yW3" secondAttribute="bottom" constant="-48" id="4cB-4r-kRL"/>
                             <constraint firstItem="wco-gi-4jE" firstAttribute="trailing" secondItem="dov-47-yW3" secondAttribute="trailing" id="4m1-mF-333"/>
                             <constraint firstItem="dov-47-yW3" firstAttribute="bottom" secondItem="0uv-lw-enO" secondAttribute="bottom" constant="10" id="6nb-j8-3xh"/>
-                            <constraint firstItem="jRp-HH-gVW" firstAttribute="centerX" secondItem="kDg-qh-RVH" secondAttribute="centerX" id="7E8-o3-eux"/>
                             <constraint firstItem="Cp5-0v-NoC" firstAttribute="leading" secondItem="dov-47-yW3" secondAttribute="leading" constant="16" id="BLs-ft-Bod"/>
                             <constraint firstItem="7gy-U7-fue" firstAttribute="top" secondItem="wco-gi-4jE" secondAttribute="bottom" constant="9" id="BQR-0t-uCr"/>
+                            <constraint firstItem="wco-gi-4jE" firstAttribute="top" secondItem="jRp-HH-gVW" secondAttribute="bottom" constant="15" id="Efl-uR-zQP"/>
                             <constraint firstItem="wco-gi-4jE" firstAttribute="leading" secondItem="dov-47-yW3" secondAttribute="leading" id="J2F-Ki-Ht7"/>
                             <constraint firstItem="7gy-U7-fue" firstAttribute="leading" secondItem="dov-47-yW3" secondAttribute="leading" constant="16" id="PUD-YK-hmS"/>
-                            <constraint firstItem="dov-47-yW3" firstAttribute="trailing" secondItem="jRp-HH-gVW" secondAttribute="trailing" constant="154" id="TRs-NE-V4z"/>
+                            <constraint firstItem="dov-47-yW3" firstAttribute="trailing" secondItem="jRp-HH-gVW" secondAttribute="trailing" constant="63" id="Tab-cS-Ub9"/>
+                            <constraint firstItem="jRp-HH-gVW" firstAttribute="leading" secondItem="dov-47-yW3" secondAttribute="leading" constant="62" id="XjQ-Kx-Uty"/>
                             <constraint firstItem="dov-47-yW3" firstAttribute="trailing" secondItem="0uv-lw-enO" secondAttribute="trailing" constant="11" id="btl-Xd-Jwc"/>
                             <constraint firstItem="dov-47-yW3" firstAttribute="trailing" secondItem="7gy-U7-fue" secondAttribute="trailing" constant="45" id="ccx-E8-hNb"/>
-                            <constraint firstItem="jRp-HH-gVW" firstAttribute="leading" secondItem="dov-47-yW3" secondAttribute="leading" constant="154" id="ftL-sR-u6n"/>
+                            <constraint firstItem="jRp-HH-gVW" firstAttribute="top" secondItem="dov-47-yW3" secondAttribute="top" constant="12" id="d7e-Ap-wye"/>
                             <constraint firstItem="0uv-lw-enO" firstAttribute="leading" secondItem="7gy-U7-fue" secondAttribute="trailing" constant="4" id="gWf-QP-BSD"/>
                             <constraint firstItem="Cp5-0v-NoC" firstAttribute="top" secondItem="dov-47-yW3" secondAttribute="top" constant="9" id="rp2-vb-1Qd"/>
-                            <constraint firstItem="jRp-HH-gVW" firstAttribute="top" secondItem="dov-47-yW3" secondAttribute="top" constant="12" id="tok-yp-t9E"/>
                             <constraint firstItem="wco-gi-4jE" firstAttribute="top" secondItem="Cp5-0v-NoC" secondAttribute="bottom" constant="15" id="vgV-t7-g4j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dov-47-yW3"/>
