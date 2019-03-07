@@ -18,6 +18,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource {
         chatsTableView.delegate = self //sets self as delegate for table view
         chatsTableView.dataSource = self //sets self as data source for table view
         chatsTableView.register(UINib(nibName: "CustomChatCell", bundle: nil), forCellReuseIdentifier: "customChatCell") //register xib file to chat table view
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -36,4 +37,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.performSegue(withIdentifier: "toMessages", sender: self)
     }
     
+    @IBAction func addConvo(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToContacts", sender: self)
+    }
 }

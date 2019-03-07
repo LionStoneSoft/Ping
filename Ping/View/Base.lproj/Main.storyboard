@@ -264,6 +264,21 @@
             </objects>
             <point key="canvasLocation" x="961" y="-676"/>
         </scene>
+        <!--Contacts-->
+        <scene sceneID="Aix-Yg-ZeH">
+            <objects>
+                <viewController title="Contacts" id="qt9-md-rUe" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FoT-QM-P7D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.092708624899999995" green="0.092814423140000005" blue="0.092725001279999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="GDo-GW-27r"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bFl-LI-NxS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="961" y="821"/>
+        </scene>
         <!--Chat List-->
         <scene sceneID="fgE-nk-W5K">
             <objects>
@@ -300,6 +315,14 @@
                                     <segue destination="bO5-9K-s8D" kind="show" id="O54-t9-tnq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CG6-Ra-egm">
+                                <rect key="frame" x="324" y="27" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="addButton"/>
+                                <connections>
+                                    <action selector="addConvo:" destination="1bE-cY-bz5" eventType="touchUpInside" id="fgW-yc-ZPF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.09270862489938736" green="0.092814423143863678" blue="0.092725001275539398" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -315,6 +338,7 @@
                     <connections>
                         <outlet property="chatsTableView" destination="aKH-cD-sr5" id="Poo-1m-kzx"/>
                         <segue destination="RbI-km-En4" kind="show" identifier="toMessages" id="zc2-sn-iAr"/>
+                        <segue destination="qt9-md-rUe" kind="show" identifier="goToContacts" id="W9h-KW-EfD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HZa-dy-Z2j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -376,7 +400,7 @@
                                     <action selector="sendMessageButton:" destination="RbI-km-En4" eventType="touchUpInside" id="hgH-x1-zYa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRp-HH-gVW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRp-HH-gVW">
                                 <rect key="frame" x="62" y="32" width="250" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -485,6 +509,7 @@
     </scenes>
     <resources>
         <image name="Ping" width="1334" height="750"/>
+        <image name="addButton" width="120" height="120"/>
         <image name="backArrow" width="120" height="120"/>
         <image name="defaultProfileIcon2" width="1524" height="976"/>
         <image name="messageSendArrow" width="120" height="120"/>
