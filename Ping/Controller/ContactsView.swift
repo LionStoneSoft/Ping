@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    
+    var users = [UserStored]()
     
     @IBOutlet var retrieveContactsTable: UITableView!
     override func viewDidLoad() {
@@ -17,21 +20,36 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
         retrieveContactsTable.delegate = self //sets self as delegate for table view
         retrieveContactsTable.dataSource = self //sets self as data source for table view
         retrieveContactsTable.register(UINib(nibName: "ContactsUserCell", bundle: nil), forCellReuseIdentifier: "contactsUserCell") //register xib file to chat table view
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactsUserCell", for: indexPath) as! ContactsUserCell //initiate custom cell for chat table view/dequeue for memory
-        let username = ["Contact1", "Contact2", "Contact3"] //declared array for test data
-        cell.contactUsername.text = username[indexPath.row] //alter contactUsername element with test data for username
-        
-        return cell
+        retrieveUser()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { //returns number of cells wanted on tableview
-        return 3
+        return users.count
     }
     
     @IBAction func backButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func retrieveUser() {
+        Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
+            if let userDictionary = snapshot.value as? [String: AnyObject] {
+                let user = UserStored()
+                user.setValuesForKeys(userDictionary)
+                print(user.username, user.email)
+                self.users.append(user)
+                DispatchQueue.main.async {
+                    self.retrieveContactsTable.reloadData()
+                }
+            }
+        }, withCancel: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contactsUserCell", for: indexPath) as! ContactsUserCell //initiate custom cell for chat table view/dequeue for memory
+        let user = users[indexPath.row]
+        cell.contactUsername.text = user.username //alter contactUsername element with test data for username
+        
+        return cell
     }
 }

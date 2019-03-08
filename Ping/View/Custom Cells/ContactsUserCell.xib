@@ -20,7 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiO-G1-ud9">
-                        <rect key="frame" x="57" y="11" width="79" height="21"/>
+                        <rect key="frame" x="57" y="11" width="263" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="ZJs-5K-46G"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -36,7 +39,7 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="gs5-He-4Hs" secondAttribute="bottom" constant="-0.5" id="0GV-cU-5dQ"/>
                     <constraint firstItem="CiO-G1-ud9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="0VZ-Uq-RWg"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="CiO-G1-ud9" secondAttribute="trailing" constant="168" id="KdG-Cp-cV8"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="CiO-G1-ud9" secondAttribute="trailing" constant="-16" id="KdG-Cp-cV8"/>
                     <constraint firstItem="gs5-He-4Hs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="LQW-08-gvd"/>
                     <constraint firstAttribute="bottomMargin" secondItem="CiO-G1-ud9" secondAttribute="bottom" constant="1" id="PJG-Ik-dol"/>
                     <constraint firstItem="CiO-G1-ud9" firstAttribute="leading" secondItem="gs5-He-4Hs" secondAttribute="trailing" constant="8" id="PRc-ef-Pxt"/>
