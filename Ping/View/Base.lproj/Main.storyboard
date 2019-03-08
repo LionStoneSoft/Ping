@@ -314,6 +314,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GDo-GW-27r"/>
                     </view>
+                    <connections>
+                        <outlet property="retrieveContactsTable" destination="JrM-24-Pih" id="Ptb-MY-ITG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bFl-LI-NxS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
