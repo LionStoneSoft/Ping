@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1711BDDDB6493F62A6E88184 /* Pods_Ping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6CACE5AADA04ED75498CE4D /* Pods_Ping.framework */; };
+		9454D44622327A84008EB52F /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454D44522327A84008EB52F /* ContactsView.swift */; };
 		946DE228221888D400EDCECC /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DE227221888D400EDCECC /* UserSettings.swift */; };
 		947731352211E17D00BAC8EC /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947731342211E17D00BAC8EC /* Registration.swift */; };
 		947731372211E19300BAC8EC /* ForgottenPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947731362211E19300BAC8EC /* ForgottenPassword.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		07346D1F521802BBB17ED1F4 /* Pods-Ping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ping.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ping/Pods-Ping.release.xcconfig"; sourceTree = "<group>"; };
+		9454D44522327A84008EB52F /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 		946DE227221888D400EDCECC /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		947731342211E17D00BAC8EC /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		947731362211E19300BAC8EC /* ForgottenPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgottenPassword.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				947731382211E1BA00BAC8EC /* ChatList.swift */,
 				94C03D6B2217179B005E2B5A /* MessageView.swift */,
 				946DE227221888D400EDCECC /* UserSettings.swift */,
+				9454D44522327A84008EB52F /* ContactsView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				94C03D692215F764005E2B5A /* CustomChatCell.swift in Sources */,
 				947731392211E1BA00BAC8EC /* ChatList.swift in Sources */,
 				94C03D6F22171811005E2B5A /* CustomMessageCell.swift in Sources */,
+				9454D44622327A84008EB52F /* ContactsView.swift in Sources */,
 				9477B20421F6860E00444F35 /* Login.swift in Sources */,
 				946DE228221888D400EDCECC /* UserSettings.swift in Sources */,
 				947731372211E19300BAC8EC /* ForgottenPassword.swift in Sources */,

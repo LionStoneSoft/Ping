@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Firebase
 
 class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var chatsTableView: UITableView!
+    @IBOutlet var topNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +20,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource {
         chatsTableView.delegate = self //sets self as delegate for table view
         chatsTableView.dataSource = self //sets self as data source for table view
         chatsTableView.register(UINib(nibName: "CustomChatCell", bundle: nil), forCellReuseIdentifier: "customChatCell") //register xib file to chat table view
+        retrieveUsername()
         
     }
     
@@ -39,5 +42,16 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBAction func addConvo(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToContacts", sender: self)
+    }
+    
+    func retrieveUsername() {
+        let currentUser = Auth.auth().currentUser
+        var databaseReference: DatabaseReference!
+        databaseReference = Database.database().reference()
+        databaseReference.child("users").child((currentUser?.uid)!).observeSingleEvent(of: .value) { (snapshot) in
+            if let name = snapshot.value as? [String: AnyObject] {
+                self.topNameLabel.text = name["username"] as? String
+            }
+        }
     }
 }
