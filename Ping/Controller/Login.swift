@@ -20,6 +20,7 @@ class Login: UIViewController {
     }
 
     @IBAction func signInPressed(_ sender: UIButton) {
+        Auth.auth().currentUser?.reload(completion: nil)
         Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
             if error != nil {
                 print(error!)

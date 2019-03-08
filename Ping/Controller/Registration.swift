@@ -46,17 +46,15 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
 
         let email = emailField.text!
         let username = usernameField.text!
-        let uid = Auth.auth().currentUser!.uid
 
         
         Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
             if error != nil {
                 print(error!)
             } else {
+                let uid = Auth.auth().currentUser!.uid
                 let imageName = NSUUID().uuidString
-                let emptyImageString = ""
                 let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName)")
-                let valuesNoImage = ["username": self.usernameField.text!, "email": self.emailField.text!, "profileImageURL": emptyImageString] as [String : Any]
                 if let uploadData = self.profileImageUpload.image?.pngData() {
                     storageRef.putData(uploadData, metadata: nil, completion: { (_, err) in
                         if let error = error {
@@ -76,8 +74,6 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
                             self.registerUser(uid, values: values as [String: AnyObject])
                         })
                     })
-                } else {
-                    self.registerUser(uid, values: valuesNoImage as [String: AnyObject])
                 }
             }
         }

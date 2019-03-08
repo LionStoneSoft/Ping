@@ -49,11 +49,10 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactsUserCell", for: indexPath) as! ContactsUserCell //initiate custom cell for chat table view/dequeue for memory
         let user = users[indexPath.row]
         cell.contactUsername.text = user.username //alter contactUsername cell element with data for username
-        if user.profileImageURL == "" {
-            cell.contactImage.image = UIImage(named: "defaultProfileIcon2")
-
+        if let profileImageUrl = user.profileImageURL {
+            cell.contactImage.loadImageUsingCacheWithUrlString(profileImageUrl)
         }
-        
         return cell
     }
 }
+

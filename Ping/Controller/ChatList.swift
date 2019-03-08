@@ -45,10 +45,10 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func retrieveUsername() {
-        let currentUser = Auth.auth().currentUser
+        let currentUser = Auth.auth().currentUser!.uid
         var databaseReference: DatabaseReference!
         databaseReference = Database.database().reference()
-        databaseReference.child("users").child((currentUser?.uid)!).observeSingleEvent(of: .value) { (snapshot) in
+        databaseReference.child("users").child(currentUser).observeSingleEvent(of: .value) { (snapshot) in
             if let name = snapshot.value as? [String: AnyObject] {
                 self.topNameLabel.text = name["username"] as? String
             }

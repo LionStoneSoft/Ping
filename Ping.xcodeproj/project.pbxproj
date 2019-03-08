@@ -12,6 +12,7 @@
 		9454D44922328719008EB52F /* ContactsUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454D44722328719008EB52F /* ContactsUserCell.swift */; };
 		9454D44A22328719008EB52F /* ContactsUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9454D44822328719008EB52F /* ContactsUserCell.xib */; };
 		9454D44E22328C5E008EB52F /* UserStored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454D44D22328C5E008EB52F /* UserStored.swift */; };
+		9454D4502232E076008EB52F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454D44F2232E076008EB52F /* Extensions.swift */; };
 		946DE228221888D400EDCECC /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DE227221888D400EDCECC /* UserSettings.swift */; };
 		947731352211E17D00BAC8EC /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947731342211E17D00BAC8EC /* Registration.swift */; };
 		947731372211E19300BAC8EC /* ForgottenPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947731362211E19300BAC8EC /* ForgottenPassword.swift */; };
@@ -35,6 +36,7 @@
 		9454D44722328719008EB52F /* ContactsUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsUserCell.swift; sourceTree = "<group>"; };
 		9454D44822328719008EB52F /* ContactsUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsUserCell.xib; sourceTree = "<group>"; };
 		9454D44D22328C5E008EB52F /* UserStored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStored.swift; sourceTree = "<group>"; };
+		9454D44F2232E076008EB52F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		946DE227221888D400EDCECC /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		947731342211E17D00BAC8EC /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		947731362211E19300BAC8EC /* ForgottenPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgottenPassword.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				9477B20821F6860F00444F35 /* Assets.xcassets */,
 				94B4FAF522149DE800C8AB77 /* GoogleService-Info.plist */,
 				9477B20D21F6860F00444F35 /* Info.plist */,
+				9454D44F2232E076008EB52F /* Extensions.swift */,
 			);
 			path = Ping;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				9477B20421F6860E00444F35 /* Login.swift in Sources */,
 				946DE228221888D400EDCECC /* UserSettings.swift in Sources */,
 				947731372211E19300BAC8EC /* ForgottenPassword.swift in Sources */,
+				9454D4502232E076008EB52F /* Extensions.swift in Sources */,
 				9454D44E22328C5E008EB52F /* UserStored.swift in Sources */,
 				947731352211E17D00BAC8EC /* Registration.swift in Sources */,
 				94C03D6C2217179B005E2B5A /* MessageView.swift in Sources */,

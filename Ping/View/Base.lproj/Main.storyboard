@@ -168,7 +168,7 @@
                                     <action selector="uploadPhotoButton:" destination="QH2-QX-Ry6" eventType="touchUpInside" id="fdr-0s-sfC"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DVu-Pe-fHh">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="DVu-Pe-fHh">
                                 <rect key="frame" x="162.5" y="39" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="KPT-n6-6uu"/>
