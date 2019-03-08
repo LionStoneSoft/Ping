@@ -11,6 +11,7 @@ import Firebase
 
 class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet var profileImageUpload: UIImageView!
     @IBOutlet var usernameField: UITextField!
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
@@ -28,10 +29,19 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
     @IBAction func uploadPhotoButton(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
+        imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         self.present(imagePicker, animated: true, completion: nil)
         
         
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.editedImage] as? UIImage else {
+            fatalError()
+        }
+        profileImageUpload.image = selectedImage
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func registerButtonPress(_ sender: UIButton) {
