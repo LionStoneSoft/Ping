@@ -32,8 +32,6 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         self.present(imagePicker, animated: true, completion: nil)
-        
-        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -45,22 +43,55 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
     }
     
     @IBAction func registerButtonPress(_ sender: UIButton) {
+
+        let email = emailField.text!
+        let username = usernameField.text!
+        let uid = Auth.auth().currentUser!.uid
+
+        
         Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
             if error != nil {
                 print(error!)
             } else {
-                let uid = Auth.auth().currentUser!.uid
-                let ref = Database.database().reference().child("users").child(uid)
-                let values = ["username": self.usernameField.text!, "email": self.emailField.text!] as [String : Any]
-                ref.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                    if err != nil {
-                        print(err!)
-                        return
-                    }
-                })
-                print("Registration Success")
-                self.performSegue(withIdentifier: "goToLoginAfterRegister", sender: self)
+                let imageName = NSUUID().uuidString
+                let emptyImageString = ""
+                let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName)")
+                let valuesNoImage = ["username": self.usernameField.text!, "email": self.emailField.text!, "profileImageURL": emptyImageString] as [String : Any]
+                if let uploadData = self.profileImageUpload.image?.pngData() {
+                    storageRef.putData(uploadData, metadata: nil, completion: { (_, err) in
+                        if let error = error {
+                            print(error)
+                            return
+                        }
+                        
+                        storageRef.downloadURL(completion: { (url, err) in
+                            if let err = err {
+                                print(err)
+                                return
+                            }
+                            
+                            guard let url = url else { return }
+                            let values = ["username": username, "email": email, "profileImageURL": url.absoluteString]
+                            
+                            self.registerUser(uid, values: values as [String: AnyObject])
+                        })
+                    })
+                } else {
+                    self.registerUser(uid, values: valuesNoImage as [String: AnyObject])
+                }
             }
         }
+    }
+    
+    func registerUser(_ uid: String, values: [String: AnyObject]) {
+        let ref = Database.database().reference().child("users").child(uid)
+        ref.updateChildValues(values, withCompletionBlock: { (err, ref) in
+            if err != nil {
+                print(err!)
+                return
+            }
+        })
+        print("Registration Success")
+        dismiss(animated: true, completion: nil)
     }
 }
