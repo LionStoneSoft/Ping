@@ -9,12 +9,11 @@
 import UIKit
 import Firebase
 
-class Registration: UIViewController {
+class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var usernameField: UITextField!
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
-    @IBOutlet var passwordReEnterField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +24,14 @@ class Registration: UIViewController {
 
     @IBAction func backButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func uploadPhotoButton(_ sender: UIButton) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker, animated: true, completion: nil)
+        
+        
     }
     
     @IBAction func registerButtonPress(_ sender: UIButton) {

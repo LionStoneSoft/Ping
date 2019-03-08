@@ -139,12 +139,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T3h-qF-7se">
-                                <rect key="frame" x="73" y="261" width="229" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2g-Rx-Xam">
                                 <rect key="frame" x="73" y="299" width="229" height="30"/>
                                 <color key="backgroundColor" red="0.058234713969999997" green="0.84925669429999995" blue="0.3282693028" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -161,39 +155,52 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0nU-Bh-OTh">
+                                <rect key="frame" x="73" y="261" width="229" height="30"/>
+                                <color key="backgroundColor" red="0.058234713969999997" green="0.84925669429999995" blue="0.3282693028" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Upload Photo">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadPhotoButton:" destination="QH2-QX-Ry6" eventType="touchUpInside" id="fdr-0s-sfC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.09270862489938736" green="0.092814423143863678" blue="0.092725001275539398" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dtH-HY-r3h" firstAttribute="centerX" secondItem="EwG-Vz-0Qs" secondAttribute="centerX" id="0Cf-sj-dML"/>
                             <constraint firstItem="nZH-fX-Jse" firstAttribute="top" secondItem="ewn-6G-HIr" secondAttribute="top" constant="34" id="2W3-kw-bJZ"/>
                             <constraint firstItem="T35-GC-mQL" firstAttribute="centerX" secondItem="EwG-Vz-0Qs" secondAttribute="centerX" id="3xg-06-Y1D"/>
-                            <constraint firstItem="T3h-qF-7se" firstAttribute="leading" secondItem="ewn-6G-HIr" secondAttribute="leading" constant="73" id="9UX-oc-JvO"/>
+                            <constraint firstItem="0nU-Bh-OTh" firstAttribute="centerX" secondItem="EwG-Vz-0Qs" secondAttribute="centerX" id="9lc-7R-BBb"/>
                             <constraint firstItem="T35-GC-mQL" firstAttribute="leading" secondItem="ewn-6G-HIr" secondAttribute="leading" constant="73" id="Fqm-e1-dbg"/>
                             <constraint firstItem="P2g-Rx-Xam" firstAttribute="leading" secondItem="ewn-6G-HIr" secondAttribute="leading" constant="73" id="H1V-L2-XZW"/>
+                            <constraint firstItem="0nU-Bh-OTh" firstAttribute="top" secondItem="TkR-DW-8yb" secondAttribute="bottom" constant="8" id="JDJ-lg-y5z"/>
                             <constraint firstItem="TkR-DW-8yb" firstAttribute="leading" secondItem="ewn-6G-HIr" secondAttribute="leading" constant="73" id="KRA-Lv-rad"/>
                             <constraint firstItem="ewn-6G-HIr" firstAttribute="trailing" secondItem="TkR-DW-8yb" secondAttribute="trailing" constant="73" id="MIJ-vB-wSk"/>
                             <constraint firstItem="dtH-HY-r3h" firstAttribute="top" secondItem="ewn-6G-HIr" secondAttribute="top" constant="84" id="NBT-Ho-Wv5"/>
+                            <constraint firstItem="P2g-Rx-Xam" firstAttribute="trailing" secondItem="0nU-Bh-OTh" secondAttribute="trailing" id="OSI-0E-dm3"/>
                             <constraint firstItem="P2g-Rx-Xam" firstAttribute="centerX" secondItem="EwG-Vz-0Qs" secondAttribute="centerX" id="PTQ-pc-xo1"/>
-                            <constraint firstItem="ewn-6G-HIr" firstAttribute="trailing" secondItem="T3h-qF-7se" secondAttribute="trailing" constant="73" id="PoA-Yb-Nz8"/>
-                            <constraint firstItem="T3h-qF-7se" firstAttribute="top" secondItem="TkR-DW-8yb" secondAttribute="bottom" constant="8" id="Sc4-hh-w1v"/>
                             <constraint firstItem="T35-GC-mQL" firstAttribute="top" secondItem="tlr-Pl-r0a" secondAttribute="bottom" constant="8" id="WNn-8C-si7"/>
+                            <constraint firstItem="P2g-Rx-Xam" firstAttribute="top" secondItem="0nU-Bh-OTh" secondAttribute="bottom" constant="8" id="Yl4-co-871"/>
                             <constraint firstItem="nZH-fX-Jse" firstAttribute="leading" secondItem="ewn-6G-HIr" secondAttribute="leading" constant="27" id="YyJ-lb-LDH"/>
+                            <constraint firstItem="0nU-Bh-OTh" firstAttribute="leading" secondItem="ewn-6G-HIr" secondAttribute="leading" constant="73" id="ZY1-HK-VCw"/>
                             <constraint firstItem="ewn-6G-HIr" firstAttribute="trailing" secondItem="tlr-Pl-r0a" secondAttribute="trailing" constant="73" id="Zxu-fC-Rj6"/>
-                            <constraint firstItem="P2g-Rx-Xam" firstAttribute="top" secondItem="T3h-qF-7se" secondAttribute="bottom" constant="8" id="am6-83-VLo"/>
+                            <constraint firstItem="ewn-6G-HIr" firstAttribute="trailing" secondItem="0nU-Bh-OTh" secondAttribute="trailing" constant="73" id="aDQ-7y-Vs5"/>
                             <constraint firstItem="tlr-Pl-r0a" firstAttribute="leading" secondItem="ewn-6G-HIr" secondAttribute="leading" constant="73" id="bUD-qp-HYr"/>
                             <constraint firstItem="TkR-DW-8yb" firstAttribute="centerX" secondItem="EwG-Vz-0Qs" secondAttribute="centerX" id="fm9-wJ-mv9"/>
+                            <constraint firstItem="P2g-Rx-Xam" firstAttribute="top" secondItem="0nU-Bh-OTh" secondAttribute="bottom" constant="8" symbolic="YES" id="jXb-XV-gVa"/>
                             <constraint firstItem="tlr-Pl-r0a" firstAttribute="top" secondItem="dtH-HY-r3h" secondAttribute="bottom" constant="13" id="jys-FN-ztB"/>
                             <constraint firstItem="TkR-DW-8yb" firstAttribute="top" secondItem="T35-GC-mQL" secondAttribute="bottom" constant="8" id="kjT-ey-qcF"/>
+                            <constraint firstItem="P2g-Rx-Xam" firstAttribute="leading" secondItem="0nU-Bh-OTh" secondAttribute="leading" id="nbe-6g-znW"/>
                             <constraint firstItem="ewn-6G-HIr" firstAttribute="trailing" secondItem="T35-GC-mQL" secondAttribute="trailing" constant="73" id="pHF-3w-ugT"/>
                             <constraint firstItem="ewn-6G-HIr" firstAttribute="trailing" secondItem="P2g-Rx-Xam" secondAttribute="trailing" constant="73" id="uxN-hS-nX7"/>
-                            <constraint firstItem="T3h-qF-7se" firstAttribute="centerX" secondItem="EwG-Vz-0Qs" secondAttribute="centerX" id="xMV-Pw-iMB"/>
+                            <constraint firstItem="ewn-6G-HIr" firstAttribute="bottom" secondItem="P2g-Rx-Xam" secondAttribute="bottom" constant="338" id="vkY-IV-7Eh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ewn-6G-HIr"/>
                     </view>
                     <connections>
                         <outlet property="emailField" destination="T35-GC-mQL" id="9vd-bC-0JC"/>
                         <outlet property="passwordField" destination="TkR-DW-8yb" id="8Hf-i0-Jo3"/>
-                        <outlet property="passwordReEnterField" destination="T3h-qF-7se" id="iAG-cc-QJy"/>
                         <outlet property="usernameField" destination="tlr-Pl-r0a" id="QMG-1v-SXH"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToLoginAfterRegister" id="UZq-VI-ieP"/>
                     </connections>
@@ -298,7 +305,9 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JrM-24-Pih">
                                 <rect key="frame" x="0.0" y="79" width="375" height="588"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.20604214879999999" green="0.20808217009999999" blue="0.20808217009999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" red="0.20604214879999999" green="0.20808217009999999" blue="0.20808217009999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.20604214879999999" green="0.20808217009999999" blue="0.20808217009999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.092708624899999995" green="0.092814423140000005" blue="0.092725001279999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
