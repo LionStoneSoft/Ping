@@ -52,7 +52,7 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
             if error != nil {
                 print(error!)
             } else {
-                let uid = Auth.auth().currentUser!.uid
+                let uid = Auth.auth().currentUser!.uid //UID moved from above to fix bug with wrong UID being pulled
                 let imageName = NSUUID().uuidString
                 let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName)")
                 if let uploadData = self.profileImageUpload.image?.pngData() {
