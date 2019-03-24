@@ -24,7 +24,7 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
     
 
     @IBAction func backButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func uploadPhotoButton(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
@@ -39,7 +39,7 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
             fatalError()
         }
         profileImageUpload.image = selectedImage
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func registerButtonPress(_ sender: UIButton) {
@@ -55,7 +55,8 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
                 let uid = Auth.auth().currentUser!.uid //UID moved from above to fix bug with wrong UID being pulled
                 let imageName = NSUUID().uuidString
                 let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName)")
-                if let uploadData = self.profileImageUpload.image?.pngData() {
+                if let uploadData = self.profileImageUpload.image?.jpegData(compressionQuality: 0.05) {
+                //if let uploadData = self.profileImageUpload.image?.pngData() {
                     storageRef.putData(uploadData, metadata: nil, completion: { (_, err) in
                         if let error = error {
                             print(error)
@@ -88,6 +89,6 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
             }
         })
         print("Registration Success")
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
 }

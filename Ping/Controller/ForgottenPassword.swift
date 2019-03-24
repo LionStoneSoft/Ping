@@ -20,7 +20,7 @@ class ForgottenPassword: UIViewController {
     }
     
     @IBAction func backButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func submitButton(_ sender: UIButton) {
@@ -29,7 +29,7 @@ class ForgottenPassword: UIViewController {
                 print(error!)
             } else {
                 print("Reset Password Success")
-                self.performSegue(withIdentifier: "goToLoginAfterReset", sender: self)
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }

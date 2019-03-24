@@ -16,6 +16,6 @@ class UserSettings: UIViewController {
     }
     
     @IBAction func backButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
 }

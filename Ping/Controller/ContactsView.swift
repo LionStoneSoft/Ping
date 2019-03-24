@@ -12,6 +12,7 @@ import Firebase
 class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     var users = [UserStored]()
+    var chatList = ChatList()
     
     @IBOutlet var retrieveContactsTable: UITableView!
     override func viewDidLoad() {
@@ -21,6 +22,7 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
         retrieveContactsTable.dataSource = self //sets self as data source for table view
         retrieveContactsTable.register(UINib(nibName: "ContactsUserCell", bundle: nil), forCellReuseIdentifier: "contactsUserCell") //register xib file to chat table view
         retrieveUser()
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { //returns number of cells wanted on tableview
@@ -28,7 +30,8 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     @IBAction func backButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func retrieveUser() {
@@ -53,6 +56,11 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
             cell.contactImage.loadImageUsingCacheWithUrlString(profileImageUrl)
         }
         return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

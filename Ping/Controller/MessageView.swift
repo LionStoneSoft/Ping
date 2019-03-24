@@ -44,12 +44,12 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     @IBAction func backButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func sendMessageButton(_ sender: UIButton) {
         let ref = Database.database().reference().child("messages")
-        let childRef = ref.childByAutoId()
+        let childRef = ref.childByAutoId() //adds a child node to ref with a unique id for each message
         let values = ["text": messageTextInput.text!, "sender": username]
         childRef.updateChildValues(values as [AnyHashable : Any])
         print(messageTextInput.text!)

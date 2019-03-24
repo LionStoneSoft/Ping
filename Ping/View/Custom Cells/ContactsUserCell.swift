@@ -25,7 +25,7 @@ class ContactsUserCell: UITableViewCell {
     }
     
     func roundedImage() {
-        self.contactImage.layer.cornerRadius = 20
+        self.contactImage.layer.cornerRadius = 30
         self.contactImage.clipsToBounds = true
     }
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wh4-7b-AuF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="OrM-TX-sgh">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="Wh4-7b-AuF" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cQN-vY-yzX">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="6I0-ze-89Z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iyj-8C-Ewz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-934" y="27"/>
+        </scene>
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -92,6 +107,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="rt3-mW-RAn"/>
                     <connections>
                         <outlet property="emailField" destination="RdF-Vl-4KA" id="acS-Cq-32Z"/>
                         <outlet property="passwordField" destination="O6r-IM-xB3" id="sdb-Jd-4pg"/>
@@ -418,7 +434,7 @@
         <!--Message View-->
         <scene sceneID="Wux-7A-Myg">
             <objects>
-                <viewController title="Message View" id="RbI-km-En4" customClass="MessageView" customModule="Ping" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessagesView" title="Message View" id="RbI-km-En4" customClass="MessageView" customModule="Ping" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kDg-qh-RVH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -558,7 +574,6 @@
                     </view>
                     <connections>
                         <outlet property="emailField" destination="1we-h1-MdP" id="XVv-HN-dkP"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToLoginAfterReset" id="6rJ-XX-guO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ilw-ou-VKR" userLabel="First Responder" sceneMemberID="firstResponder"/>
