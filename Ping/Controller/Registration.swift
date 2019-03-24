@@ -39,7 +39,7 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
             fatalError()
         }
         profileImageUpload.image = selectedImage
-        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func registerButtonPress(_ sender: UIButton) {

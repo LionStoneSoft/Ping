@@ -31,7 +31,7 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func backButton(_ sender: UIButton) {
         //self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func retrieveUser() {
@@ -60,7 +60,9 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true) {
+            print("HELLO")
+        }
     }
 }
 

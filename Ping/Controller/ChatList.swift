@@ -42,7 +42,10 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func addConvo(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "goToContacts", sender: self)
+        let VC1 = self.storyboard!.instantiateViewController(withIdentifier: "Contacts View") as! ContactsView
+        let navController = UINavigationController(rootViewController: VC1) // Creating a navigation controller with VC1 at the root of the navigation stack.
+        navController.isNavigationBarHidden = true
+        self.present(navController, animated:true, completion: nil)
     }
     
     func retrieveUsername() {
