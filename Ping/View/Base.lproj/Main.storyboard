@@ -23,7 +23,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iyj-8C-Ewz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-934" y="27"/>
+            <point key="canvasLocation" x="-842" y="27"/>
         </scene>
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
@@ -589,6 +589,6 @@
         <image name="messageSendArrow" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UZq-VI-ieP"/>
+        <segue reference="6I0-ze-89Z"/>
     </inferredMetricsTieBreakers>
 </document>

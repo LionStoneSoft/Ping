@@ -42,10 +42,16 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func addConvo(_ sender: UIButton) {
-        let VC1 = self.storyboard!.instantiateViewController(withIdentifier: "Contacts View") as! ContactsView
-        let navController = UINavigationController(rootViewController: VC1) // Creating a navigation controller with VC1 at the root of the navigation stack.
-        navController.isNavigationBarHidden = true
-        self.present(navController, animated:true, completion: nil)
+        handleNewMessage()
+    }
+    
+    @objc func handleNewMessage() {
+            let contacts = ContactsView()
+            contacts.chatList = self
+            let VC1 = storyboard!.instantiateViewController(withIdentifier: "Contacts View")
+            let navController = UINavigationController(rootViewController: VC1) // Creating a navigation controller with VC1 at the root of the navigation stack.
+            navController.isNavigationBarHidden = true
+            self.present(navController, animated:true, completion: nil)
     }
     
     func retrieveUsername() {
@@ -59,10 +65,16 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    var tester: UIViewController = MessageView()
-    
     func segueToMessages() {
         self.performSegue(withIdentifier: "toMessages", sender: self)
     }
+    
+    func newChatSegue() {
+        present(MessageView(), animated: true, completion: nil)
+    }
+    
+//    func addUser(_ user: User) {
+//        print(user.displayName)
+//    }
     
 }

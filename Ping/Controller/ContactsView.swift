@@ -12,7 +12,7 @@ import Firebase
 class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     var users = [UserStored]()
-    var chatList = ChatList()
+    var chatList: ChatList?
     
     @IBOutlet var retrieveContactsTable: UITableView!
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
             if let userDictionary = snapshot.value as? [String: AnyObject] {
                 let user = UserStored()
                 user.setValuesForKeys(userDictionary)
-                print(user.username, user.email)
+                //print(user.username, user.email)
                 self.users.append(user)
                 DispatchQueue.main.async {
                     self.retrieveContactsTable.reloadData()
@@ -58,10 +58,11 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
         return cell
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         dismiss(animated: true) {
-            print("HELLO")
+            print("yep")
+            //let user = self.users[indexPath.row]
+            self.chatList?.newChatSegue()
         }
     }
 }
