@@ -9,10 +9,14 @@
 import UIKit
 import Firebase
 
+protocol ViewControllerBDelegate: class {
+    func getDataBack(info: String) -> ()
+}
+
 class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     var users = [UserStored]()
-    var chatList: ChatList?
+    weak var delegate: ViewControllerBDelegate?
     
     @IBOutlet var retrieveContactsTable: UITableView!
     override func viewDidLoad() {
@@ -59,10 +63,12 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print(self.users[indexPath.row].username)
+//        self.selectedName = self.users[indexPath.row].username
         dismiss(animated: true) {
-            print("yep")
-            //let user = self.users[indexPath.row]
-            self.chatList?.newChatSegue()
+            print("dismissed view")
+            self.delegate?.getDataBack(info: self.users[indexPath.row].username)
+
         }
     }
 }

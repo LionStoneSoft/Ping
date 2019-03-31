@@ -9,12 +9,12 @@
 import UIKit
 import Firebase
 
-class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewControllerBDelegate {
     
     @IBOutlet var chatsTableView: UITableView!
     @IBOutlet var topNameLabel: UILabel!
     var chats = 1
-    
+    var name: String = "no name"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(name)
         segueToMessages()
     }
     
@@ -45,13 +46,15 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource {
         handleNewMessage()
     }
     
-    @objc func handleNewMessage() {
-            let contacts = ContactsView()
-            contacts.chatList = self
-            let VC1 = storyboard!.instantiateViewController(withIdentifier: "Contacts View")
-            let navController = UINavigationController(rootViewController: VC1) // Creating a navigation controller with VC1 at the root of the navigation stack.
-            navController.isNavigationBarHidden = true
-            self.present(navController, animated:true, completion: nil)
+    func handleNewMessage() {
+        let sb = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        let contacts = sb.instantiateViewController(withIdentifier: "Contacts View") as! ContactsView
+        contacts.delegate = self
+        self.present(contacts, animated: true, completion: nil)
+    }
+    
+    func getDataBack(info: String) {
+        print(info)
     }
     
     func retrieveUsername() {
@@ -68,13 +71,5 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func segueToMessages() {
         self.performSegue(withIdentifier: "toMessages", sender: self)
     }
-    
-    func newChatSegue() {
-        present(MessageView(), animated: true, completion: nil)
-    }
-    
-//    func addUser(_ user: User) {
-//        print(user.displayName)
-//    }
     
 }
