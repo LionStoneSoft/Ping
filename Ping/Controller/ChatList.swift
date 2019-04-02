@@ -14,7 +14,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     @IBOutlet var chatsTableView: UITableView!
     @IBOutlet var topNameLabel: UILabel!
     var chats = 1
-    var name: String = "no name"
+    var currentUser: UserStored?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,13 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
         chatsTableView.dataSource = self //sets self as data source for table view
         chatsTableView.register(UINib(nibName: "CustomChatCell", bundle: nil), forCellReuseIdentifier: "customChatCell") //register xib file to chat table view
         retrieveUsername()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMessages" {
+            let secondView = segue.destination as! MessageView
+            secondView.currentUser = currentUser
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -38,23 +45,19 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(name)
+//        print(currentUser?.uid)
         segueToMessages()
     }
     
     @IBAction func addConvo(_ sender: UIButton) {
-        handleNewMessage()
-    }
-    
-    func handleNewMessage() {
         let sb = UIStoryboard.init(name: "Main", bundle: Bundle.main)
         let contacts = sb.instantiateViewController(withIdentifier: "Contacts View") as! ContactsView
         contacts.delegate = self
         self.present(contacts, animated: true, completion: nil)
     }
     
-    func getDataBack(info: String) {
-        print(info)
+    func getDataBack(selectedUser: UserStored) {
+        currentUser = selectedUser
     }
     
     func retrieveUsername() {

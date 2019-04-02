@@ -394,11 +394,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Oj-3s-jkR">
-                                <rect key="frame" x="65" y="27" width="245" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="OKD-Gl-CbS"/>
-                                    <constraint firstAttribute="width" constant="245" id="lN1-wM-DYj"/>
-                                </constraints>
+                                <rect key="frame" x="187.5" y="27" width="0.0" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -409,12 +405,12 @@
                             <constraint firstItem="CG6-Ra-egm" firstAttribute="top" secondItem="MQP-dG-FAu" secondAttribute="top" constant="7" id="5H1-H2-FQX"/>
                             <constraint firstAttribute="bottom" secondItem="aKH-cD-sr5" secondAttribute="bottom" id="8O8-RW-m97"/>
                             <constraint firstItem="aKH-cD-sr5" firstAttribute="trailing" secondItem="MQP-dG-FAu" secondAttribute="trailing" id="8wb-Ea-SmW"/>
-                            <constraint firstItem="7Oj-3s-jkR" firstAttribute="leading" secondItem="0Td-nV-8q1" secondAttribute="trailing" constant="2" id="9aS-18-ogs"/>
-                            <constraint firstItem="7Oj-3s-jkR" firstAttribute="top" secondItem="MQP-dG-FAu" secondAttribute="top" constant="7" id="BLm-Zf-utb"/>
                             <constraint firstItem="aKH-cD-sr5" firstAttribute="leading" secondItem="MQP-dG-FAu" secondAttribute="leading" id="FPH-YP-UEx"/>
+                            <constraint firstItem="aKH-cD-sr5" firstAttribute="top" secondItem="7Oj-3s-jkR" secondAttribute="bottom" constant="17" id="QM9-e3-Q07"/>
                             <constraint firstItem="MQP-dG-FAu" firstAttribute="trailing" secondItem="CG6-Ra-egm" secondAttribute="trailing" constant="16" id="WeB-Bp-qt9"/>
-                            <constraint firstItem="aKH-cD-sr5" firstAttribute="top" secondItem="7Oj-3s-jkR" secondAttribute="bottom" constant="20" id="YBj-zF-GGV"/>
                             <constraint firstItem="aKH-cD-sr5" firstAttribute="top" secondItem="MQP-dG-FAu" secondAttribute="top" constant="59" id="gHG-nd-ay2"/>
+                            <constraint firstItem="7Oj-3s-jkR" firstAttribute="centerX" secondItem="uZZ-rR-K7g" secondAttribute="centerX" id="gUx-Oh-Dze"/>
+                            <constraint firstItem="7Oj-3s-jkR" firstAttribute="top" secondItem="MQP-dG-FAu" secondAttribute="top" constant="7" id="sWF-q2-dsp"/>
                             <constraint firstItem="0Td-nV-8q1" firstAttribute="top" secondItem="MQP-dG-FAu" secondAttribute="top" constant="7" id="wIK-WQ-ocg"/>
                             <constraint firstItem="0Td-nV-8q1" firstAttribute="leading" secondItem="MQP-dG-FAu" secondAttribute="leading" constant="16" id="ygf-ch-xIX"/>
                         </constraints>
@@ -589,6 +585,6 @@
         <image name="messageSendArrow" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6I0-ze-89Z"/>
+        <segue reference="UZq-VI-ieP"/>
     </inferredMetricsTieBreakers>
 </document>

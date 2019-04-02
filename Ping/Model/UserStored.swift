@@ -9,6 +9,7 @@
 import UIKit
 
 class UserStored: NSObject {
+    @objc var uid: String!
     @objc var email: String!
     @objc var username: String!
     @objc var profileImageURL: String!

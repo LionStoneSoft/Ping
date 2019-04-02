@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 protocol ViewControllerBDelegate: class {
-    func getDataBack(info: String) -> ()
+    func getDataBack(selectedUser: UserStored) -> ()
 }
 
 class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource{
@@ -67,7 +67,7 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
 //        self.selectedName = self.users[indexPath.row].username
         dismiss(animated: true) {
             print("dismissed view")
-            self.delegate?.getDataBack(info: self.users[indexPath.row].username)
+            self.delegate?.getDataBack(selectedUser: self.users[indexPath.row])
 
         }
     }

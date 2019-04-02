@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1711BDDDB6493F62A6E88184 /* Pods_Ping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6CACE5AADA04ED75498CE4D /* Pods_Ping.framework */; };
+		94367E542253BE8B000FD635 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94367E532253BE8B000FD635 /* MessageData.swift */; };
 		9454D44622327A84008EB52F /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454D44522327A84008EB52F /* ContactsView.swift */; };
 		9454D44922328719008EB52F /* ContactsUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454D44722328719008EB52F /* ContactsUserCell.swift */; };
 		9454D44A22328719008EB52F /* ContactsUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9454D44822328719008EB52F /* ContactsUserCell.xib */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		07346D1F521802BBB17ED1F4 /* Pods-Ping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ping.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ping/Pods-Ping.release.xcconfig"; sourceTree = "<group>"; };
+		94367E532253BE8B000FD635 /* MessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
 		9454D44522327A84008EB52F /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 		9454D44722328719008EB52F /* ContactsUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsUserCell.swift; sourceTree = "<group>"; };
 		9454D44822328719008EB52F /* ContactsUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsUserCell.xib; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				9454D44D22328C5E008EB52F /* UserStored.swift */,
+				94367E532253BE8B000FD635 /* MessageData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				946DE228221888D400EDCECC /* UserSettings.swift in Sources */,
 				947731372211E19300BAC8EC /* ForgottenPassword.swift in Sources */,
 				9454D4502232E076008EB52F /* Extensions.swift in Sources */,
+				94367E542253BE8B000FD635 /* MessageData.swift in Sources */,
 				9454D44E22328C5E008EB52F /* UserStored.swift in Sources */,
 				947731352211E17D00BAC8EC /* Registration.swift in Sources */,
 				94C03D6C2217179B005E2B5A /* MessageView.swift in Sources */,

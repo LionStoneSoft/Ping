@@ -70,7 +70,7 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
                             }
                             
                             guard let url = url else { return }
-                            let values = ["username": username, "email": email, "profileImageURL": url.absoluteString]
+                            let values = ["username": username, "email": email, "profileImageURL": url.absoluteString, "uid": uid]
                             
                             self.registerUser(uid, values: values as [String: AnyObject])
                         })
