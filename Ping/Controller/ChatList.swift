@@ -13,8 +13,11 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     
     @IBOutlet var chatsTableView: UITableView!
     @IBOutlet var topNameLabel: UILabel!
-    var chats = 1
     var currentUser: UserStored?
+    var userList = [UserStored]()
+    var messages = [MessageData]() //declared array to hold messages
+    var messagesDictionary = [String: MessageData]()
+    var nameArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
         chatsTableView.dataSource = self //sets self as data source for table view
         chatsTableView.register(UINib(nibName: "CustomChatCell", bundle: nil), forCellReuseIdentifier: "customChatCell") //register xib file to chat table view
         retrieveUsername()
+        retrieveChats()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -34,14 +38,13 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customChatCell", for: indexPath) as! CustomChatCell //initiate custom cell for chat table view
-        let username = ["TestUser"] //declared array for test data
-        cell.chatUsername.text = username[indexPath.row] //alter chatUsername element with test data for username
-        
+        //let username = ["TestUser"] //declared array for test data
+        cell.chatUsername.text = nameArray[indexPath.row] //alter chatUsername element with test data for username
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { //returns number of cells wanted on tableview
-        return chats
+        return messages.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -49,26 +52,45 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
         segueToMessages()
     }
     
-    @IBAction func addConvo(_ sender: UIButton) {
+    @IBAction func addConvo(_ sender: UIButton) { //Upon button press, creates a contacts view, sets self as contacts delegate and presents contacts view.
         let sb = UIStoryboard.init(name: "Main", bundle: Bundle.main)
         let contacts = sb.instantiateViewController(withIdentifier: "Contacts View") as! ContactsView
         contacts.delegate = self
         self.present(contacts, animated: true, completion: nil)
     }
     
-    func getDataBack(selectedUser: UserStored) {
+    func getDataBack(selectedUser: UserStored) { //used to retrieve data from the contacts view
         currentUser = selectedUser
     }
     
-    func retrieveUsername() {
-        let currentUser = Auth.auth().currentUser!.uid
+    func retrieveUsername() { //retrieves the username of the currently logged in user and displays in the top bar
+        let uid = Auth.auth().currentUser!.uid
         var databaseReference: DatabaseReference!
         databaseReference = Database.database().reference()
-        databaseReference.child("users").child(currentUser).observeSingleEvent(of: .value) { (snapshot) in
+        databaseReference.child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
             if let name = snapshot.value as? [String: AnyObject] {
                 self.topNameLabel.text = name["username"] as? String
             }
         }
+    }
+    
+    func retrieveChats() { //groups the messages by their recipients and displays them in the UITableView
+        let ref = Database.database().reference().child("messages")
+        ref.observe(.childAdded, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                let message = MessageData(dictionary: dictionary)
+                if let recipient = message.recipient {
+                    self.messagesDictionary[recipient] = message
+                    self.messages = Array(self.messagesDictionary.values)
+                    
+                    self.nameArray.append(message.senderName!)
+                }
+                DispatchQueue.main.async(execute: {
+                    self.chatsTableView.reloadData()
+                })
+            }
+        }, withCancel: nil)
+        
     }
     
     func segueToMessages() {

@@ -15,6 +15,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet var messageNameLabel: UILabel!
     @IBOutlet var messageTableView: UITableView!
     var messages = [MessageData]() //declared array to hold messages
+    var messagesGrouped = [String: MessageData]()
     var username: String!
     var currentUser: UserStored?
     
@@ -53,7 +54,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let ref = Database.database().reference().child("messages")
         let childRef = ref.childByAutoId() //adds a child node to ref with a unique id for each message
         let timestamp = NSNumber(value: NSDate().timeIntervalSince1970)
-        let values = ["text": messageTextInput.text!, "recipient": currentUser?.uid, "sender": Auth.auth().currentUser?.uid, "timestamp": timestamp] as [String : Any]
+        let values = ["senderName": currentUser?.username, "text": messageTextInput.text!, "recipient": currentUser?.uid, "sender": Auth.auth().currentUser?.uid, "timestamp": timestamp] as [String : Any]
         childRef.updateChildValues(values as [AnyHashable : Any])
         print(messageTextInput.text!)
     }
@@ -62,9 +63,10 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let ref = Database.database().reference().child("messages")
         ref.observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                let message = MessageData()
+                let message = MessageData(dictionary: dictionary)
                 message.setValuesForKeys(dictionary)
                 self.messages.append(message)
+                
                 DispatchQueue.main.async(execute: {
                     self.messageTableView.reloadData()
                 })
