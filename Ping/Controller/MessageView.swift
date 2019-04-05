@@ -21,7 +21,6 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         messageTableView.delegate = self //sets self as delegate for table view
         messageTableView.dataSource = self //sets self as data source for table view
         messageTableView.register(UINib(nibName: "CustomMessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell") //register xib file to chat table view

@@ -62,10 +62,11 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        dismiss(animated: true) {
-            print("dismissed view")
+        weak var pvc:UIViewController! = self.presentingViewController?.children[1]
+        dismiss(animated: true)
+        {
             self.delegate?.getDataBack(selectedUser: self.users[indexPath.row])
-
+            pvc.performSegue(withIdentifier: "toMessages", sender: nil)
         }
     }
 }
