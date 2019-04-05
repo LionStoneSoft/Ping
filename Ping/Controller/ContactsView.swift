@@ -26,7 +26,6 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
         retrieveContactsTable.dataSource = self //sets self as data source for table view
         retrieveContactsTable.register(UINib(nibName: "ContactsUserCell", bundle: nil), forCellReuseIdentifier: "contactsUserCell") //register xib file to chat table view
         retrieveUser()
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { //returns number of cells wanted on tableview
@@ -63,8 +62,6 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(self.users[indexPath.row].username)
-//        self.selectedName = self.users[indexPath.row].username
         dismiss(animated: true) {
             print("dismissed view")
             self.delegate?.getDataBack(selectedUser: self.users[indexPath.row])

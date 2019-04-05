@@ -243,7 +243,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QrL-kn-CS4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QrL-kn-CS4">
                                 <rect key="frame" x="0.0" y="79" width="375" height="588"/>
                                 <color key="backgroundColor" red="0.092708624899999995" green="0.092814423140000005" blue="0.092725001279999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -253,7 +253,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iYY-Is-2Zo" id="K8Y-yV-s8H">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.20604214879999999" green="0.20808217009999999" blue="0.20808217009999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -421,6 +421,7 @@
                     </view>
                     <connections>
                         <outlet property="chatsTableView" destination="aKH-cD-sr5" id="Poo-1m-kzx"/>
+                        <outlet property="settingsButtonPicture" destination="0Td-nV-8q1" id="3M0-4u-KLc"/>
                         <outlet property="topNameLabel" destination="7Oj-3s-jkR" id="gye-Ww-EVH"/>
                         <segue destination="RbI-km-En4" kind="show" identifier="toMessages" id="zc2-sn-iAr"/>
                         <segue destination="qt9-md-rUe" kind="show" identifier="goToContacts" id="W9h-KW-EfD"/>

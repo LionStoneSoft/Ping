@@ -11,6 +11,7 @@ import Firebase
 
 class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewControllerBDelegate {
     
+    @IBOutlet var settingsButtonPicture: UIButton!
     @IBOutlet var chatsTableView: UITableView!
     @IBOutlet var topNameLabel: UILabel!
     var currentUser: UserStored?
@@ -21,12 +22,12 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         chatsTableView.delegate = self //sets self as delegate for table view
         chatsTableView.dataSource = self //sets self as data source for table view
         chatsTableView.register(UINib(nibName: "CustomChatCell", bundle: nil), forCellReuseIdentifier: "customChatCell") //register xib file to chat table view
         retrieveUsername()
         retrieveChats()
+        retrieveUserAvatar()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -38,7 +39,6 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customChatCell", for: indexPath) as! CustomChatCell //initiate custom cell for chat table view
-        //let username = ["TestUser"] //declared array for test data
         cell.chatUsername.text = nameArray[indexPath.row] //alter chatUsername element with test data for username
         return cell
     }
@@ -48,7 +48,6 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(currentUser?.uid)
         segueToMessages()
     }
     
@@ -97,4 +96,17 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
         self.performSegue(withIdentifier: "toMessages", sender: self)
     }
     
+    func retrieveUserAvatar() {
+        let uid = Auth.auth().currentUser!.uid
+        
+        Database.database().reference().child("users").child(uid).child("profileImageURL").observeSingleEvent(of: .value, with: { (snapshot) in
+            let profileURL = snapshot.value as! String
+            let storageRef = Storage.storage().reference(forURL: profileURL)
+            storageRef.getData(maxSize: 1 * 1024 * 1024, completion: { (data, error) in
+                let pic = UIImage(data: data!)
+                self.settingsButtonPicture.setImage(pic, for: .normal)
+            })
+            
+        }, withCancel: nil)
+    }
 }
