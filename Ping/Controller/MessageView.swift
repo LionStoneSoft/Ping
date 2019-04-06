@@ -15,7 +15,6 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet var messageNameLabel: UILabel!
     @IBOutlet var messageTableView: UITableView!
     var messages = [MessageData]() //declared array to hold messages
-    var messagesGrouped = [String: MessageData]()
     var username: String!
     var currentUser: UserStored?
     
@@ -59,12 +58,16 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     func refreshMessages() {
+        let uid = Auth.auth().currentUser!.uid
         let ref = Database.database().reference().child("messages")
         ref.observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 let message = MessageData(dictionary: dictionary)
-                message.setValuesForKeys(dictionary)
-                self.messages.append(message)
+                if message.recipient == self.currentUser?.uid && message.sender == uid || message.recipient == uid && message.sender == self.currentUser?.uid {
+                    message.setValuesForKeys(dictionary)
+                    self.messages.append(message)
+                }
+                
                 
                 DispatchQueue.main.async(execute: {
                     self.messageTableView.reloadData()
@@ -72,17 +75,5 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
             }
         }, withCancel: nil)
     }
-    
-//    func retrieveUsername() {
-//        let loggedUser = Auth.auth().currentUser
-//        var databaseReference: DatabaseReference!
-//        databaseReference = Database.database().reference()
-//        databaseReference.child("users").child((loggedUser?.uid)!).observeSingleEvent(of: .value) { (snapshot) in
-//            if let name = snapshot.value as? [String: AnyObject] {
-//                self.messageNameLabel.text = name["username"] as? String
-//                self.username = name["username"] as? String
-//            }
-//        }
-//    }
 }
 
