@@ -15,10 +15,9 @@ class UserSettings: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         settingsTable.delegate = self //sets self as delegate for table view
         settingsTable.dataSource = self //sets self as data source for table view
-        settingsTable.register(UINib(nibName: "UserSettingsCell", bundle: nil), forCellReuseIdentifier: "userSettingsCell") //register xib file to chat table view
+        settingsTable.register(UINib(nibName: "UserSettingsCell", bundle: nil), forCellReuseIdentifier: "userSettingsCell") //register xib file to settings table view
     }
     
     @IBAction func backButton(_ sender: UIButton) {
@@ -31,13 +30,11 @@ class UserSettings: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userSettingsCell", for: indexPath) as! UserSettingsCell //initiate custom cell for chat table view
-        //let username = ["TestUser"] //declared array for test data
         cell.settingsLabel.text = "Log out" //alter chatUsername element with test data for username
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //self.navigationController?.popViewController(animated: true)
         do {
             try Auth.auth().signOut()
             let controllerStack = self.navigationController?.viewControllers

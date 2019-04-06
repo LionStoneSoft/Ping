@@ -21,7 +21,6 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet var retrieveContactsTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         retrieveContactsTable.delegate = self //sets self as delegate for table view
         retrieveContactsTable.dataSource = self //sets self as data source for table view
         retrieveContactsTable.register(UINib(nibName: "ContactsUserCell", bundle: nil), forCellReuseIdentifier: "contactsUserCell") //register xib file to chat table view
@@ -33,7 +32,6 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     @IBAction func backButton(_ sender: UIButton) {
-        //self.dismiss(animated: true, completion: nil)
         self.dismiss(animated: true, completion: nil)
     }
     

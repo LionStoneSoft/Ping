@@ -18,7 +18,6 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         hideKeyboardWhenTappedAround()
     }
     
@@ -56,7 +55,6 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
                 let imageName = NSUUID().uuidString
                 let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName)")
                 if let uploadData = self.profileImageUpload.image?.jpegData(compressionQuality: 0.05) {
-                //if let uploadData = self.profileImageUpload.image?.pngData() {
                     storageRef.putData(uploadData, metadata: nil, completion: { (_, err) in
                         if let error = error {
                             print(error)

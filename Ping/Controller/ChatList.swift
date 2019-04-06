@@ -19,6 +19,8 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     var messages = [MessageData]() //declared array to hold messages
     var messagesDictionary = [String: MessageData]()
     var nameArray = [String]()
+    var users = [UserStored]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
         retrieveUserAvatar()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { //before segue, sets currentUser with current user snapshot
         if segue.identifier == "toMessages" {
             let secondView = segue.destination as! MessageView
             secondView.currentUser = currentUser
@@ -47,8 +49,23 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
         return messages.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        segueToMessages()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //when the specific row is selected, segues to the message view
+        let selectedName = nameArray[indexPath.row]
+        Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
+            if let userDictionary = snapshot.value as? [String: AnyObject] {
+                let user = UserStored()
+                user.setValuesForKeys(userDictionary)
+                //print(user.username, user.email)
+                self.users.append(user)
+                
+                if user.username == selectedName {
+                    self.currentUser = user
+                    self.segueToMessages()
+                }
+                
+            }
+        }, withCancel: nil)
+        
     }
     
     @IBAction func addConvo(_ sender: UIButton) { //Upon button press, creates a contacts view, sets self as contacts delegate and presents contacts view.
@@ -92,13 +109,12 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
         
     }
     
-    func segueToMessages() {
+    func segueToMessages() { //when called, segues to the message view
         self.performSegue(withIdentifier: "toMessages", sender: self)
     }
     
-    func retrieveUserAvatar() {
+    func retrieveUserAvatar() { //creates a snapshot of the logged in users profileImageURL, downloads the image and sets the buttons image
         let uid = Auth.auth().currentUser!.uid
-        
         Database.database().reference().child("users").child(uid).child("profileImageURL").observeSingleEvent(of: .value, with: { (snapshot) in
             let profileURL = snapshot.value as! String
             let storageRef = Storage.storage().reference(forURL: profileURL)
@@ -109,4 +125,19 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
             
         }, withCancel: nil)
     }
+    
+//    func retrieveUser() {
+//        Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
+//            if let userDictionary = snapshot.value as? [String: AnyObject] {
+//                let user = UserStored()
+//                user.setValuesForKeys(userDictionary)
+//                //print(user.username, user.email)
+//                self.users.append(user)
+//                DispatchQueue.main.async {
+//                    self.retrieveContactsTable.reloadData()
+//                }
+//            }
+//        }, withCancel: nil)
+//    }
+    
 }
