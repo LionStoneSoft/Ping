@@ -46,7 +46,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { //returns number of cells wanted on tableview
-        return messages.count
+        return nameArray.count //messages.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //when the specific row is selected, segues to the message view
@@ -91,6 +91,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     }
     
     func retrieveChats() { //groups the messages by their recipients and displays them in the UITableView
+        let uid = Auth.auth().currentUser!.uid
         let ref = Database.database().reference().child("messages")
         ref.observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject] {
@@ -98,8 +99,15 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
                 if let recipient = message.recipient {
                     self.messagesDictionary[recipient] = message
                     self.messages = Array(self.messagesDictionary.values)
-                    
+                    print(self.messagesDictionary.values)
+                    if message.recipient == uid {
                     self.nameArray.append(message.senderName!)
+                    } else if message.sender == uid {
+                        Database.database().reference().child("users").child(message.sender!).child("username").observeSingleEvent(of: .value, with: { (snapshot) in
+                            let name = snapshot.value as! String
+                            self.nameArray.append(name)
+                        })
+                    }
                 }
                 DispatchQueue.main.async(execute: {
                     self.chatsTableView.reloadData()

@@ -17,6 +17,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     var messages = [MessageData]() //declared array to hold messages
     var username: String!
     var currentUser: UserStored?
+    var currentName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         hideKeyboardWhenTappedAround()
         messageNameLabel.text = currentUser?.username
         refreshMessages()
+        setupUsername()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,7 +54,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let ref = Database.database().reference().child("messages")
         let childRef = ref.childByAutoId() //adds a child node to ref with a unique id for each message
         let timestamp = NSNumber(value: NSDate().timeIntervalSince1970)
-        let values = ["senderName": currentUser?.username, "text": messageTextInput.text!, "recipient": currentUser?.uid, "sender": Auth.auth().currentUser?.uid, "timestamp": timestamp] as [String : Any]
+        let values = ["senderName": currentName, "text": messageTextInput.text!, "recipient": currentUser?.uid, "sender": Auth.auth().currentUser?.uid, "timestamp": timestamp] as [String : Any]
         childRef.updateChildValues(values as [AnyHashable : Any])
         print(messageTextInput.text!)
     }
@@ -73,6 +75,13 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
                     self.messageTableView.reloadData()
                 })
             }
+        }, withCancel: nil)
+    }
+    
+    func setupUsername() {
+        let uid = Auth.auth().currentUser!.uid
+        Database.database().reference().child("users").child(uid).child("username").observeSingleEvent(of: .value, with: { (snapshot) in
+            self.currentName = snapshot.value as? String
         }, withCancel: nil)
     }
 }
