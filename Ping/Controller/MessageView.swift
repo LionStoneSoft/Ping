@@ -18,6 +18,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     var username: String!
     var currentUser: UserStored?
     var currentName: String?
+    var recipientName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         hideKeyboardWhenTappedAround()
         messageNameLabel.text = currentUser?.username
         refreshMessages()
-        setupUsername()
+        setupNames()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,7 +55,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let ref = Database.database().reference().child("messages")
         let childRef = ref.childByAutoId() //adds a child node to ref with a unique id for each message
         let timestamp = NSNumber(value: NSDate().timeIntervalSince1970)
-        let values = ["senderName": currentName, "text": messageTextInput.text!, "recipient": currentUser?.uid, "sender": Auth.auth().currentUser?.uid, "timestamp": timestamp] as [String : Any]
+        let values = ["senderName": currentName, "receiverName": recipientName, "text": messageTextInput.text!, "recipient": currentUser?.uid, "sender": Auth.auth().currentUser?.uid, "timestamp": timestamp] as [String : Any]
         childRef.updateChildValues(values as [AnyHashable : Any])
         print(messageTextInput.text!)
     }
@@ -78,10 +79,14 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         }, withCancel: nil)
     }
     
-    func setupUsername() {
+    func setupNames() {
         let uid = Auth.auth().currentUser!.uid
         Database.database().reference().child("users").child(uid).child("username").observeSingleEvent(of: .value, with: { (snapshot) in
             self.currentName = snapshot.value as? String
+        }, withCancel: nil)
+        
+        Database.database().reference().child("users").child(currentUser!.uid).child("username").observeSingleEvent(of: .value, with: { (snapshot) in
+            self.recipientName = snapshot.value as? String
         }, withCancel: nil)
     }
 }

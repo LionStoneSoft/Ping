@@ -20,6 +20,8 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     var messagesDictionary = [String: MessageData]()
     var nameArray = [String]()
     var users = [UserStored]()
+    var currentName: String?
+    var recipientName: String?
 
     
     override func viewDidLoad() {
@@ -30,6 +32,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
         retrieveUsername()
         retrieveChats()
         retrieveUserAvatar()
+        usersName()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { //before segue, sets currentUser with current user snapshot
@@ -42,11 +45,12 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customChatCell", for: indexPath) as! CustomChatCell //initiate custom cell for chat table view
         cell.chatUsername.text = nameArray[indexPath.row] //alter chatUsername element with test data for username
+        cell.chatLastMessage.text = "test"
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { //returns number of cells wanted on tableview
-        return nameArray.count //messages.count
+        return messages.count //nameArray.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //when the specific row is selected, segues to the message view
@@ -91,24 +95,23 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     }
     
     func retrieveChats() { //groups the messages by their recipients and displays them in the UITableView
-        let uid = Auth.auth().currentUser!.uid
         let ref = Database.database().reference().child("messages")
         ref.observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 let message = MessageData(dictionary: dictionary)
-                if let recipient = message.recipient {
-                    self.messagesDictionary[recipient] = message
-                    self.messages = Array(self.messagesDictionary.values)
-                    print(self.messagesDictionary.values)
-                    if message.recipient == uid {
-                    self.nameArray.append(message.senderName!)
-                    } else if message.sender == uid {
-                        Database.database().reference().child("users").child(message.sender!).child("username").observeSingleEvent(of: .value, with: { (snapshot) in
-                            let name = snapshot.value as! String
-                            self.nameArray.append(name)
-                        })
+                if message.receiverName == self.currentName || message.senderName == self.currentName {
+                    if let recipient = message.recipient {
+                        self.messagesDictionary[recipient] = message
+                        self.messages = Array(self.messagesDictionary.values)
+                        
+                        if message.receiverName != self.currentName {
+                            self.nameArray.append(message.receiverName!)
+                        } else {
+                            self.nameArray.append(message.senderName!)
+                        }
                     }
                 }
+                
                 DispatchQueue.main.async(execute: {
                     self.chatsTableView.reloadData()
                 })
@@ -131,6 +134,13 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
                 self.settingsButtonPicture.setImage(pic, for: .normal)
             })
             
+        }, withCancel: nil)
+    }
+    
+    func usersName() {
+        let uid = Auth.auth().currentUser!.uid
+        Database.database().reference().child("users").child(uid).child("username").observeSingleEvent(of: .value, with: { (snapshot) in
+            self.currentName = snapshot.value as? String
         }, withCancel: nil)
     }
     

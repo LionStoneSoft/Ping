@@ -11,6 +11,7 @@ import UIKit
 class MessageData: NSObject {
 
     @objc var senderName: String?
+    @objc var receiverName: String?
     @objc var recipient: String?
     @objc var sender: String?
     @objc var text: String?
@@ -18,6 +19,7 @@ class MessageData: NSObject {
     
     init(dictionary: [String: Any]) {
         self.senderName = dictionary["senderName"] as? String
+        self.receiverName = dictionary["receiverName"] as? String
         self.recipient = dictionary["recipient"] as? String
         self.sender = dictionary["sender"] as? String
         self.text = dictionary["text"] as? String
