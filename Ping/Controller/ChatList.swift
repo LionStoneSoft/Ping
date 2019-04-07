@@ -50,7 +50,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { //returns number of cells wanted on tableview
-        return messages.count //nameArray.count
+        return messages.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //when the specific row is selected, segues to the message view
@@ -103,7 +103,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
                     if let recipient = message.recipient {
                         self.messagesDictionary[recipient] = message
                         self.messages = Array(self.messagesDictionary.values)
-                        
+                        print(recipient)
                         if message.receiverName != self.currentName {
                             self.nameArray.append(message.receiverName!)
                         } else {

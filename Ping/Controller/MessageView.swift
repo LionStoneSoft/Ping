@@ -35,6 +35,9 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell //initiate custom cell for chat table view
         cell.messageFromUserText.text = messages[indexPath.row].text //alter chatUsername element with test data for username
+        if messages[indexPath.row].recipient == currentUser?.uid {
+            cell.cellBackView.backgroundColor = UIColor.gray
+        }
         return cell
     }
     
@@ -58,6 +61,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let values = ["senderName": currentName, "receiverName": recipientName, "text": messageTextInput.text!, "recipient": currentUser?.uid, "sender": Auth.auth().currentUser?.uid, "timestamp": timestamp] as [String : Any]
         childRef.updateChildValues(values as [AnyHashable : Any])
         print(messageTextInput.text!)
+        messageTextInput.text = ""
     }
     
     func refreshMessages() {
@@ -70,8 +74,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
                     message.setValuesForKeys(dictionary)
                     self.messages.append(message)
                 }
-                
-                
+
                 DispatchQueue.main.async(execute: {
                     self.messageTableView.reloadData()
                 })
