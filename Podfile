@@ -12,5 +12,7 @@ pod 'Firebase/Database'
 pod 'Firebase/Core'
 pod 'FirebaseStorage'
 pod 'SVProgressHUD'
+pod 'IQKeyboardManagerSwift'
+pod 'AES256CBC'
 
 end

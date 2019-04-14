@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import AES256CBC
 
 class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -19,6 +20,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     var currentUser: UserStored?
     var currentName: String?
     var recipientName: String?
+    let password = "1htftu856PGrD46H1F3gz5fG400GZz64"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         messageNameLabel.text = currentUser?.username
         refreshMessages()
         setupNames()
+        print(password)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,7 +61,8 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let ref = Database.database().reference().child("messages")
         let childRef = ref.childByAutoId() //adds a child node to ref with a unique id for each message
         let timestamp = NSNumber(value: NSDate().timeIntervalSince1970)
-        let values = ["senderName": currentName, "receiverName": recipientName, "text": messageTextInput.text!, "recipient": currentUser?.uid, "sender": Auth.auth().currentUser?.uid, "timestamp": timestamp] as [String : Any]
+        let text = messageTextInput.text!
+        let values = ["senderName": currentName, "receiverName": recipientName, "text": AES256CBC.encryptString(text, password: password), "recipient": currentUser?.uid, "sender": Auth.auth().currentUser?.uid, "timestamp": timestamp] as [String : Any]
         childRef.updateChildValues(values as [AnyHashable : Any])
         print(messageTextInput.text!)
         messageTextInput.text = ""
@@ -72,6 +76,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
                 let message = MessageData(dictionary: dictionary)
                 if message.recipient == self.currentUser?.uid && message.sender == uid || message.recipient == uid && message.sender == self.currentUser?.uid {
                     message.setValuesForKeys(dictionary)
+                    message.text = AES256CBC.decryptString(message.text!, password: self.password)
                     self.messages.append(message)
                 }
 
@@ -92,5 +97,8 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
             self.recipientName = snapshot.value as? String
         }, withCancel: nil)
     }
+    
+    
+    
 }
 
