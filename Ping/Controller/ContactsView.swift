@@ -40,8 +40,11 @@ class ContactsView: UIViewController, UITableViewDelegate, UITableViewDataSource
             if let userDictionary = snapshot.value as? [String: AnyObject] {
                 let user = UserStored()
                 user.setValuesForKeys(userDictionary)
+                let uid = Auth.auth().currentUser!.uid
                 //print(user.username, user.email)
-                self.users.append(user)
+                if user.uid != uid {
+                    self.users.append(user)
+                }
                 DispatchQueue.main.async {
                     self.retrieveContactsTable.reloadData()
                 }
