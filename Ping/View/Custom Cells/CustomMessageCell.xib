@@ -20,10 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OKN-kt-Xfj">
-                        <rect key="frame" x="6" y="3" width="307" height="26"/>
+                        <rect key="frame" x="6" y="3" width="240" height="26"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeL-pR-P3E">
-                                <rect key="frame" x="3" y="1" width="300" height="24"/>
+                                <rect key="frame" x="3" y="1" width="235" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -31,7 +31,7 @@
                         <color key="backgroundColor" red="0.13676008579999999" green="0.7064190507" blue="0.43973171709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="DeL-pR-P3E" firstAttribute="top" secondItem="OKN-kt-Xfj" secondAttribute="top" constant="1" id="9L1-sW-ieg"/>
-                            <constraint firstAttribute="trailing" secondItem="DeL-pR-P3E" secondAttribute="trailing" constant="4" id="AEH-6o-8sZ"/>
+                            <constraint firstAttribute="trailing" secondItem="DeL-pR-P3E" secondAttribute="trailing" constant="2" id="AEH-6o-8sZ"/>
                             <constraint firstAttribute="bottom" secondItem="DeL-pR-P3E" secondAttribute="bottom" constant="1" id="D9k-e7-Lu6"/>
                             <constraint firstItem="DeL-pR-P3E" firstAttribute="leading" secondItem="OKN-kt-Xfj" secondAttribute="leading" constant="3" id="EPP-k2-G0q"/>
                         </constraints>
@@ -42,7 +42,7 @@
                     <constraint firstAttribute="bottom" secondItem="OKN-kt-Xfj" secondAttribute="bottom" constant="3.5" id="1xG-P6-au0"/>
                     <constraint firstItem="OKN-kt-Xfj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="90t-xo-LPi"/>
                     <constraint firstItem="OKN-kt-Xfj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="9mf-mf-91s"/>
-                    <constraint firstAttribute="trailing" secondItem="OKN-kt-Xfj" secondAttribute="trailing" constant="5" id="UFC-Q0-3zJ"/>
+                    <constraint firstAttribute="trailing" secondItem="OKN-kt-Xfj" secondAttribute="trailing" constant="72" id="UFC-Q0-3zJ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

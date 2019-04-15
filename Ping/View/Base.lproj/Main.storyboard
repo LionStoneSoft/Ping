@@ -357,7 +357,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aKH-cD-sr5">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="77" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aKH-cD-sr5">
                                 <rect key="frame" x="0.0" y="79" width="375" height="588"/>
                                 <color key="backgroundColor" red="0.09270862489938736" green="0.092814423143863678" blue="0.092725001275539398" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -477,7 +477,6 @@
                             <constraint firstItem="wco-gi-4jE" firstAttribute="trailing" secondItem="dov-47-yW3" secondAttribute="trailing" id="4m1-mF-333"/>
                             <constraint firstItem="dov-47-yW3" firstAttribute="bottom" secondItem="0uv-lw-enO" secondAttribute="bottom" constant="10" id="6nb-j8-3xh"/>
                             <constraint firstItem="Cp5-0v-NoC" firstAttribute="leading" secondItem="dov-47-yW3" secondAttribute="leading" constant="16" id="BLs-ft-Bod"/>
-                            <constraint firstItem="7gy-U7-fue" firstAttribute="top" secondItem="wco-gi-4jE" secondAttribute="bottom" constant="9" id="BQR-0t-uCr"/>
                             <constraint firstItem="wco-gi-4jE" firstAttribute="top" secondItem="jRp-HH-gVW" secondAttribute="bottom" constant="15" id="Efl-uR-zQP"/>
                             <constraint firstItem="wco-gi-4jE" firstAttribute="leading" secondItem="dov-47-yW3" secondAttribute="leading" id="J2F-Ki-Ht7"/>
                             <constraint firstItem="7gy-U7-fue" firstAttribute="leading" secondItem="dov-47-yW3" secondAttribute="leading" constant="16" id="PUD-YK-hmS"/>
@@ -489,6 +488,7 @@
                             <constraint firstItem="0uv-lw-enO" firstAttribute="leading" secondItem="7gy-U7-fue" secondAttribute="trailing" constant="4" id="gWf-QP-BSD"/>
                             <constraint firstItem="Cp5-0v-NoC" firstAttribute="top" secondItem="dov-47-yW3" secondAttribute="top" constant="9" id="rp2-vb-1Qd"/>
                             <constraint firstItem="wco-gi-4jE" firstAttribute="top" secondItem="Cp5-0v-NoC" secondAttribute="bottom" constant="15" id="vgV-t7-g4j"/>
+                            <constraint firstItem="7gy-U7-fue" firstAttribute="top" secondItem="wco-gi-4jE" secondAttribute="bottom" constant="9" id="z7h-Rs-pnC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dov-47-yW3"/>
                     </view>

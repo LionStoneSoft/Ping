@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import AES256CBC
+import IQKeyboardManagerSwift
+import ReverseExtension
 
 class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -24,9 +26,10 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        messageTableView.delegate = self //sets self as delegate for table view
-        messageTableView.dataSource = self //sets self as data source for table view
+        messageTableView.re.delegate = self //sets self as delegate for table view
+        messageTableView.re.dataSource = self //sets self as data source for table view
         messageTableView.register(UINib(nibName: "CustomMessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell") //register xib file to chat table view
+        messageTableView.register(UINib(nibName: "CustomMessageCell2", bundle: nil), forCellReuseIdentifier: "customMessageCell2")
         configureTableView()
         hideKeyboardWhenTappedAround()
         messageNameLabel.text = currentUser?.username
@@ -35,12 +38,16 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell //initiate custom cell for chat table view
-        cell.messageFromUserText.text = messages[indexPath.row].text //alter chatUsername element with test data for username
         if messages[indexPath.row].recipient == currentUser?.uid {
-            cell.cellBackView.backgroundColor = UIColor.gray
+            let cell2 = tableView.dequeueReusableCell(withIdentifier: "customMessageCell2", for: indexPath) as! CustomMessageCell2
+            //cell.cellBackView.backgroundColor = UIColor.gray
+            cell2.messageFromUserText.text = messages[indexPath.row].text
+            return cell2
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell //initiate custom cell for chat table view
+            cell.messageFromUserText.text = messages[indexPath.row].text //alter chatUsername element with test data for username
+            return cell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { //returns number of cells wanted on tableview
@@ -49,7 +56,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     func configureTableView() {
         messageTableView.rowHeight = UITableView.automaticDimension //adjust the height of the cell to content
-        messageTableView.estimatedRowHeight = 35.0
+        messageTableView.estimatedRowHeight = 85.0
     }
     
     @IBAction func backButton(_ sender: UIButton) {
@@ -96,8 +103,6 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
             self.recipientName = snapshot.value as? String
         }, withCancel: nil)
     }
-    
-    
     
 }
 

@@ -75,6 +75,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - ReverseExtension (0.5.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -85,6 +86,7 @@ DEPENDENCIES:
   - Firebase/Database
   - FirebaseStorage
   - IQKeyboardManagerSwift
+  - ReverseExtension
   - SVProgressHUD
 
 SPEC REPOS:
@@ -104,6 +106,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - leveldb-library
     - nanopb
+    - ReverseExtension
     - SVProgressHUD
 
 SPEC CHECKSUMS:
@@ -122,8 +125,9 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  ReverseExtension: 21c8dd4e767f93b56fb97d873686d24160f83945
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 223a9e5bcd785f042debe974c0ba333bc0e4811d
+PODFILE CHECKSUM: b90db5a7d15a481931ff0cc025ce432b33887428
 
 COCOAPODS: 1.6.0
