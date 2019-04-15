@@ -16,12 +16,13 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     @IBOutlet var topNameLabel: UILabel!
     var currentUser: UserStored?
     var userList = [UserStored]()
-    var messages = [MessageData]() //declared array to hold messages
-    var messagesDictionary = [String: MessageData]()
+    var messages = [MessageData]() //declared array to hold messages objects
+    var messagesDictionary = [String: MessageData]() //contains messages parsed into string data
     var nameArray = [String]()
     var users = [UserStored]()
     var currentName: String?
     var recipientName: String?
+    var allUsers = [UserStored]()
 
     
     override func viewDidLoad() {
@@ -33,6 +34,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
         retrieveChats()
         retrieveUserAvatar()
         usersName()
+        retrieveAllUsers()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { //before segue, sets currentUser with current user snapshot
@@ -45,7 +47,13 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customChatCell", for: indexPath) as! CustomChatCell //initiate custom cell for chat table view
         cell.chatUsername.text = nameArray[indexPath.row] //alter chatUsername element with test data for username
-        cell.chatLastMessage.text = "test"
+        cell.chatLastMessage.text = ""
+        for user in allUsers {
+            if user.username == cell.chatUsername.text {
+                cell.chatImage.loadImageUsingCacheWithUrlString(user.profileImageURL)
+            }
+        }
+
         return cell
     }
     
@@ -59,12 +67,10 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
             if let userDictionary = snapshot.value as? [String: AnyObject] {
                 let user = UserStored()
                 user.setValuesForKeys(userDictionary)
-                //print(user.username, user.email)
                 self.users.append(user)
                 if user.username == selectedName {
                     self.currentUser = user
                     self.segueToMessages()
-                    print(self.nameArray)
                 }
                 
             }
@@ -103,7 +109,6 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
                     if let recipient = message.recipient {
                         self.messagesDictionary[recipient] = message
                         self.messages = Array(self.messagesDictionary.values)
-                        print(self.messagesDictionary.values)
                         if message.receiverName != self.currentName {
                             self.nameArray.append(message.receiverName!)
                         } else {
@@ -141,6 +146,17 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
         let uid = Auth.auth().currentUser!.uid
         Database.database().reference().child("users").child(uid).child("username").observeSingleEvent(of: .value, with: { (snapshot) in
             self.currentName = snapshot.value as? String
+        }, withCancel: nil)
+    }
+    
+    func retrieveAllUsers() {
+        Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
+            if let userDictionary = snapshot.value as? [String: AnyObject] {
+                let user = UserStored()
+                user.setValuesForKeys(userDictionary)
+                self.allUsers.append(user)
+                
+            }
         }, withCancel: nil)
     }
     
