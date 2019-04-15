@@ -32,7 +32,6 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         messageNameLabel.text = currentUser?.username
         refreshMessages()
         setupNames()
-        print(password)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

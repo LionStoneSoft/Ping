@@ -50,7 +50,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { //returns number of cells wanted on tableview
-        return messages.count
+        return nameArray.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //when the specific row is selected, segues to the message view
@@ -61,10 +61,10 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
                 user.setValuesForKeys(userDictionary)
                 //print(user.username, user.email)
                 self.users.append(user)
-                
                 if user.username == selectedName {
                     self.currentUser = user
                     self.segueToMessages()
+                    print(self.nameArray)
                 }
                 
             }
@@ -103,7 +103,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
                     if let recipient = message.recipient {
                         self.messagesDictionary[recipient] = message
                         self.messages = Array(self.messagesDictionary.values)
-                        print(recipient)
+                        print(self.messagesDictionary.values)
                         if message.receiverName != self.currentName {
                             self.nameArray.append(message.receiverName!)
                         } else {
@@ -111,13 +111,13 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
                         }
                     }
                 }
-                
+                self.nameArray.removeDuplicates()
+
                 DispatchQueue.main.async(execute: {
                     self.chatsTableView.reloadData()
                 })
             }
         }, withCancel: nil)
-        
     }
     
     func segueToMessages() { //when called, segues to the message view
@@ -158,4 +158,18 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
 //        }, withCancel: nil)
 //    }
     
+}
+
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+        
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+    
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
+    }
 }
