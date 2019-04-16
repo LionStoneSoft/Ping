@@ -86,9 +86,13 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let ref = Database.database().reference().child("messages")
         let childRef = ref.childByAutoId() //adds a child node to ref with a unique id for each message
         let timestamp = NSNumber(value: NSDate().timeIntervalSince1970)
-        let text = messageTextInput.text!
-        let values = ["messageID": childRef.key, "senderName": currentName, "receiverName": recipientName, "text": AES256CBC.encryptString(text, password: password), "recipient": currentUser?.uid, "sender": Auth.auth().currentUser?.uid, "timestamp": timestamp] as [String : Any]
-        childRef.updateChildValues(values as [AnyHashable : Any])
+        let text = messageTextInput?.text
+        let values = ["messageID": childRef.key, "senderName": currentName, "receiverName": recipientName, "text": AES256CBC.encryptString(text ?? "", password: password), "recipient": currentUser?.uid, "sender": Auth.auth().currentUser?.uid, "timestamp": timestamp] as [String : Any]
+        if text == "" {
+            print("Message was blank")
+        } else {
+            childRef.updateChildValues(values as [AnyHashable : Any])
+        }
         print(messageTextInput.text!)
         messageTextInput.text = ""
     }

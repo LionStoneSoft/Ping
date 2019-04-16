@@ -614,7 +614,6 @@
         <image name="messageSendArrow" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bR0-TG-16M"/>
         <segue reference="UZq-VI-ieP"/>
     </inferredMetricsTieBreakers>
 </document>
