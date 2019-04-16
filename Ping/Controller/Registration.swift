@@ -15,6 +15,7 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
     @IBOutlet var usernameField: UITextField!
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
+    @IBOutlet var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,10 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
         
         Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
             if error != nil {
-                print(error!)
+                guard let error = AuthErrorCode(rawValue: (error?._code)!) else {
+                    return
+                }
+                self.authErrorHandling(code: error) //pass error code to authErrorHandling switch function
             } else {
                 let uid = Auth.auth().currentUser!.uid //UID moved from above to fix bug with wrong UID being pulled
                 let imageName = NSUUID().uuidString
@@ -88,5 +92,18 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
         })
         print("Registration Success")
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func authErrorHandling(code: AuthErrorCode) {
+        switch code {
+        case .weakPassword:
+            errorLabel.text = "Password too weak"
+        case .emailAlreadyInUse:
+            errorLabel.text = "Email already in use"
+        case .networkError:
+            errorLabel.text = "Network error occured"
+        default:
+            print("An error occured")
+        }
     }
 }

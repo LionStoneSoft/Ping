@@ -13,6 +13,7 @@ class Login: UIViewController {
 
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
+    @IBOutlet var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +21,13 @@ class Login: UIViewController {
     }
 
     @IBAction func signInPressed(_ sender: UIButton) {
-        Auth.auth().currentUser?.reload(completion: nil)
-        Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
+        Auth.auth().currentUser?.reload(completion: nil) //reloads state of current user
+        Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in //Uses Firebase Auth method for sign-in
             if error != nil {
-                print(error!)
+                guard let error = AuthErrorCode(rawValue: (error?._code)!) else {
+                    return
+                }
+                self.authErrorHandling(code: error) //pass error code to authErrorHandling switch function
             } else {
                 print("Login Success")
                 self.performSegue(withIdentifier: "goToChat", sender: self)
@@ -31,8 +35,19 @@ class Login: UIViewController {
         }
     }
     
-    override open var shouldAutorotate: Bool { //disable auto rotate for this view
-        return false
+    func authErrorHandling(code: AuthErrorCode) {
+        switch code {
+        case .wrongPassword:
+            errorLabel.text = "Password Incorrect"
+        case .emailAlreadyInUse:
+            errorLabel.text = "Email already in use"
+        case .userNotFound:
+            errorLabel.text = "Invalid Email"
+        case .networkError:
+            errorLabel.text = "Network error occured"
+        default:
+            print("An error occured")
+        }
     }
     
 }

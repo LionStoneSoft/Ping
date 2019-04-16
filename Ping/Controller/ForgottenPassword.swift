@@ -12,6 +12,7 @@ import Firebase
 class ForgottenPassword: UIViewController {
     
     @IBOutlet var emailField: UITextField!
+    @IBOutlet var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +26,25 @@ class ForgottenPassword: UIViewController {
     @IBAction func submitButton(_ sender: UIButton) {
         Auth.auth().sendPasswordReset(withEmail: emailField.text!) { (error) in
             if error != nil {
-                print(error!)
+                guard let error = AuthErrorCode(rawValue: (error?._code)!) else {
+                    return
+                }
+                self.authErrorHandling(code: error) //pass error code to authErrorHandling switch function
             } else {
                 print("Reset Password Success")
                 self.navigationController?.popViewController(animated: true)
             }
+        }
+    }
+    
+    func authErrorHandling(code: AuthErrorCode) {
+        switch code {
+        case .invalidEmail:
+            errorLabel.text = "Invalid Email"
+        case .networkError:
+            errorLabel.text = "Network error occured"
+        default:
+            print("An error occured")
         }
     }
 }
