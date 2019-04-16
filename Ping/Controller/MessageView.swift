@@ -54,6 +54,24 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         return messages.count
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let uid = Auth.auth().currentUser!.uid
+        if editingStyle == .delete {
+            if messages[indexPath.row].sender == uid {
+                let ref = Database.database().reference().child("messages").child(messages[indexPath.row].messageID!)
+                ref.removeValue()
+                messages.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                print("deleted")
+            } else {
+                print("You can't delete this")
+            }
+                //tableView.deleteRows(at: [indexPath], with: .automatic)
+            //print(messages[indexPath.row].text)
+            
+        }
+    }
+    
     func configureTableView() {
         messageTableView.rowHeight = UITableView.automaticDimension //adjust the height of the cell to content
         messageTableView.estimatedRowHeight = 85.0
@@ -68,7 +86,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let childRef = ref.childByAutoId() //adds a child node to ref with a unique id for each message
         let timestamp = NSNumber(value: NSDate().timeIntervalSince1970)
         let text = messageTextInput.text!
-        let values = ["senderName": currentName, "receiverName": recipientName, "text": AES256CBC.encryptString(text, password: password), "recipient": currentUser?.uid, "sender": Auth.auth().currentUser?.uid, "timestamp": timestamp] as [String : Any]
+        let values = ["messageID": childRef.key, "senderName": currentName, "receiverName": recipientName, "text": AES256CBC.encryptString(text, password: password), "recipient": currentUser?.uid, "sender": Auth.auth().currentUser?.uid, "timestamp": timestamp] as [String : Any]
         childRef.updateChildValues(values as [AnyHashable : Any])
         print(messageTextInput.text!)
         messageTextInput.text = ""
@@ -91,7 +109,13 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
                 })
             }
         }, withCancel: nil)
-    }
+        ref.observe(.childRemoved) { (snapshot) in
+                DispatchQueue.main.async(execute: {
+                    self.messageTableView.reloadData()
+                })
+            }
+        }
+    
     
     func setupNames() {
         let uid = Auth.auth().currentUser!.uid

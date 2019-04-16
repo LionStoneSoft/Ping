@@ -16,6 +16,7 @@ class MessageData: NSObject {
     @objc var sender: String?
     @objc var text: String?
     @objc var timestamp: NSNumber?
+    @objc var messageID: String?
     
     init(dictionary: [String: Any]) {
         self.senderName = dictionary["senderName"] as? String
@@ -24,6 +25,7 @@ class MessageData: NSObject {
         self.sender = dictionary["sender"] as? String
         self.text = dictionary["text"] as? String
         self.timestamp = dictionary["timestamp"] as? NSNumber
+        self.messageID = dictionary["messageID"] as? String
     }
     
 }
