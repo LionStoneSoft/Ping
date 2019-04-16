@@ -35,6 +35,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         messageNameLabel.text = currentUser?.username
         refreshMessages()
         setupNames()
+        removeMessagesRefresh()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -109,12 +110,16 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
                 })
             }
         }, withCancel: nil)
-        ref.observe(.childRemoved) { (snapshot) in
-                DispatchQueue.main.async(execute: {
-                    self.messageTableView.reloadData()
-                })
-            }
-        }
+    }
+    
+    func removeMessagesRefresh() {
+        let ref = Database.database().reference().child("messages")
+        ref.observe(.childRemoved, with: { (snapshot) in
+            self.messages.removeAll()
+            self.refreshMessages()
+        }, withCancel: nil)
+    }
+    
     
     
     func setupNames() {
