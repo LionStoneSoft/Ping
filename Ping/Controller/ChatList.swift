@@ -76,6 +76,7 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
                 
             }
         }, withCancel: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
         
     }
     
