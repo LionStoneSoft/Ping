@@ -103,7 +103,7 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
         case .networkError:
             errorLabel.text = "Network error occured"
         default:
-            print("An error occured")
+            errorLabel.text = "An error occured"
         }
     }
 }
