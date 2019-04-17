@@ -31,10 +31,11 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
         chatsTableView.dataSource = self //sets self as data source for table view
         chatsTableView.register(UINib(nibName: "CustomChatCell", bundle: nil), forCellReuseIdentifier: "customChatCell") //register xib file to chat table view
         retrieveUsername()
-        retrieveChats()
         retrieveUserAvatar()
         usersName()
         retrieveAllUsers()
+        retrieveChats()
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { //before segue, sets currentUser with current user snapshot
