@@ -12,7 +12,7 @@ import AES256CBC
 import IQKeyboardManagerSwift
 import ReverseExtension
 
-class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     @IBOutlet var messageTextInput: UITextField!
     @IBOutlet var messageNameLabel: UILabel!
@@ -30,6 +30,7 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         messageTableView.re.dataSource = self //sets self as data source for table view
         messageTableView.register(UINib(nibName: "CustomMessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell") //register xib file to chat table view
         messageTableView.register(UINib(nibName: "CustomMessageCell2", bundle: nil), forCellReuseIdentifier: "customMessageCell2")
+        messageTextInput.delegate = self
         configureTableView()
         hideKeyboardWhenTappedAround()
         messageNameLabel.text = currentUser?.username
@@ -83,6 +84,10 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     @IBAction func sendMessageButton(_ sender: UIButton) {
+        sendMessage()
+    }
+    
+    func sendMessage() {
         let ref = Database.database().reference().child("messages")
         let childRef = ref.childByAutoId() //adds a child node to ref with a unique id for each message
         let timestamp = NSNumber(value: NSDate().timeIntervalSince1970)
@@ -124,8 +129,6 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         }, withCancel: nil)
     }
     
-    
-    
     func setupNames() {
         let uid = Auth.auth().currentUser!.uid
         Database.database().reference().child("users").child(uid).child("username").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -135,6 +138,11 @@ class MessageView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         Database.database().reference().child("users").child(currentUser!.uid).child("username").observeSingleEvent(of: .value, with: { (snapshot) in
             self.recipientName = snapshot.value as? String
         }, withCancel: nil)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        sendMessage()
+        return true
     }
     
 }
