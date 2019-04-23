@@ -162,20 +162,6 @@ class ChatList: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
         }, withCancel: nil)
     }
     
-//    func retrieveUser() {
-//        Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
-//            if let userDictionary = snapshot.value as? [String: AnyObject] {
-//                let user = UserStored()
-//                user.setValuesForKeys(userDictionary)
-//                //print(user.username, user.email)
-//                self.users.append(user)
-//                DispatchQueue.main.async {
-//                    self.retrieveContactsTable.reloadData()
-//                }
-//            }
-//        }, withCancel: nil)
-//    }
-    
 }
 
 extension Array where Element: Hashable {

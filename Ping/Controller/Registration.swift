@@ -42,7 +42,7 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func registerButtonPress(_ sender: UIButton) {
+    @IBAction func registerButtonPress(_ sender: UIButton) { //values are taken from the fields and passed to the registerUser method
 
         let email = emailField.text!
         let username = usernameField.text!
@@ -82,6 +82,7 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
         }
     }
     
+    //adds the registered user to the database then segues if successful
     func registerUser(_ uid: String, values: [String: AnyObject]) {
         let ref = Database.database().reference().child("users").child(uid)
         ref.updateChildValues(values, withCompletionBlock: { (err, ref) in
@@ -91,9 +92,11 @@ class Registration: UIViewController, UIImagePickerControllerDelegate, UINavigat
             }
         })
         print("Registration Success")
+        errorLabel.text = ""
         self.navigationController?.popViewController(animated: true)
     }
     
+    //handles Firebase registration errors with a switch, changes label
     func authErrorHandling(code: AuthErrorCode) {
         switch code {
         case .weakPassword:

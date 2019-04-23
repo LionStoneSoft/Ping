@@ -30,6 +30,7 @@ class Login: UIViewController {
                 self.authErrorHandling(code: error) //pass error code to authErrorHandling switch function
             } else {
                 print("Login Success")
+                self.errorLabel.text = ""
                 self.performSegue(withIdentifier: "goToChat", sender: self)
             }
         }

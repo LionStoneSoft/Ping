@@ -32,6 +32,7 @@ class ForgottenPassword: UIViewController {
                 self.authErrorHandling(code: error) //pass error code to authErrorHandling switch function
             } else {
                 print("Reset Password Success")
+                self.errorLabel.text = ""
                 self.navigationController?.popViewController(animated: true)
             }
         }
